@@ -1,18 +1,8 @@
-// components/Hero/HeroContent.tsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { Zap, Download, ExternalLink } from "lucide-react";
+import { Zap, Download } from "lucide-react";
 import { ActionButton } from "./ActionButton";
 import { DynamicCodeSnippet } from "./DynamicCodeSnippet";
-
-
-
-
-
-
-
-
-// ---------------------------------------------
 
 interface HeroContentProps {
   scrollToSection: (sectionId: string) => void;
@@ -39,7 +29,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      Yumna <span className="gradient-text">Ataba</span>
+      Esraa <span className="gradient-text">Ghneem</span>
     </motion.h1>
 
     <motion.h2
@@ -48,7 +38,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.4 }}
     >
-      Frontend Developer
+      Backend Developer
     </motion.h2>
 
     <motion.p
@@ -57,9 +47,9 @@ const HeroContent: React.FC<HeroContentProps> = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 0.6 }}
     >
-      Passionate Frontend Developer with 2+ years of experience creating
-      beautiful, responsive web and mobile applications using React.js, Flutter,
-      and modern technologies.
+      Backend Developer specializing in PHP and Laravel, focused on building
+      reliable RESTful APIs, database-driven applications, and scalable
+      backend systems with clean and maintainable architecture.
     </motion.p>
 
     {/* Creative Element: Dynamic Code Snippet */}
@@ -74,22 +64,25 @@ const HeroContent: React.FC<HeroContentProps> = ({
         hidden: { opacity: 0 },
         visible: {
           opacity: 1,
-          transition: { staggerChildren: 0.15, delayChildren: 1.8 },
+          transition: {
+            staggerChildren: 0.15,
+            delayChildren: 1.8,
+          },
         },
       }}
     >
       <ActionButton
         label="Get In Touch"
         onClick={() => scrollToSection("contact")}
-       icon={Zap || ExternalLink}
+        icon={Zap}
         variant="primary"
-       
       />
+
       <ActionButton
         label="Download CV"
         icon={Download}
         variant="secondary"
-        href="./yumna_ataba_Resume (1).pdf"
+        href="#"
       />
     </motion.div>
   </motion.div>
