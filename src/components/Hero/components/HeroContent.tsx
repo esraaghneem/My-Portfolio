@@ -85,6 +85,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
         icon={Download}
         variant="secondary"
         href={cvFile}
+        download
       />
     </motion.div>
   </motion.div>
