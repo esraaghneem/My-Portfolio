@@ -19,8 +19,12 @@ export interface Project {
   solution: string;
   outcome: string;
   features: string[];
-  image: string;
+
+  // Optional because not every project has screenshots
+  image?: string;
+
   imageGroups?: ProjectImageGroup[];
+
   liveUrl?: string;
   githubUrl?: string;
 }
@@ -41,13 +45,6 @@ import hotelServiceRequest from "../assets/hotel-service-request.png";
 
 import hotelStaffTasks from "../assets/hotel-staff-tasks.png";
 import hotelStaffRequests from "../assets/hotel-staff-requests.png";
-
-// ------------------------------
-// Other Projects
-// ------------------------------
-
-import charityImage from "../assets/compliants.png";
-import ecommerceImage from "../assets/Screenshot 2025-11-03 122320.png";
 
 // ==============================
 // Projects
@@ -125,7 +122,10 @@ export const projects: Project[] = [
       "Service-layer business logic",
     ],
 
-    // الصورة الرئيسية للكارد
+    // ==============================
+    // Main Card Image
+    // ==============================
+
     image: hotelDashboardManager,
 
     // ==============================
@@ -140,6 +140,7 @@ export const projects: Project[] = [
 
       {
         title: "Customer Website",
+
         images: [
           hotelRoomBooking,
           hotelServiceRequest,
@@ -152,6 +153,7 @@ export const projects: Project[] = [
 
       {
         title: "Management Dashboard",
+
         images: [
           hotelDashboardManager,
           hotelDashboardDepartment,
@@ -164,6 +166,7 @@ export const projects: Project[] = [
 
       {
         title: "Staff Application",
+
         images: [
           hotelStaffTasks,
           hotelStaffRequests,
@@ -171,10 +174,10 @@ export const projects: Project[] = [
       },
     ],
 
-    // لا يوجد Live Demo حقيقي
+    // No deployed demo
     liveUrl: "#",
 
-    // الفندق موجود على GitHub
+    // Hotel project is available on GitHub
     githubUrl: "https://github.com/esraaghneem",
   },
 
@@ -203,19 +206,20 @@ export const projects: Project[] = [
       "Service Layer",
       "Role-Based Access Control",
       "Database Design",
+      "Request Validation",
     ],
 
     description:
-      "A scalable charity management system designed to organize beneficiaries, donations, campaigns, users, and administrative operations through a centralized backend platform.",
+      "A scalable charity management system designed to organize beneficiaries, donations, campaigns, users, and administrative operations through a centralized backend platform. My main contribution focused on backend development, API design, database relationships, authentication, authorization, and business logic.",
 
     challenge:
-      "The system required secure management of different users and permissions while handling charity data, donations, beneficiaries, campaigns, and administrative workflows.",
+      "The system required secure management of different users and permissions while handling charity data, beneficiaries, donations, campaigns, and administrative workflows in a structured and maintainable way.",
 
     solution:
-      "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, role-based permissions, structured business logic, database relationships, and service-layer architecture.",
+      "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, role-based permissions, request validation, structured business logic, database relationships, and service-layer architecture.",
 
     outcome:
-      "Delivered a structured and scalable backend system that helps organize charity operations, manage data efficiently, and provide secure access based on user roles.",
+      "Delivered a structured and scalable backend system that organizes charity operations, manages data efficiently, and provides secure access based on user roles and permissions.",
 
     features: [
       "User authentication",
@@ -225,24 +229,25 @@ export const projects: Project[] = [
       "Campaign management",
       "Administrative operations",
       "Secure REST APIs",
+      "Request validation",
       "Database relationship management",
       "Service-layer architecture",
+      "Authorization and access control",
     ],
 
-    image: charityImage,
-
-    // المشروع غير مرفوع على GitHub
+    // No image for now
+    // No GitHub because the project is not uploaded
     liveUrl: "#",
   },
 
   // =========================================================
-  // 3. E-COMMERCE PLATFORM
+  // 3. E-COMMERCE APPLICATION & ADMIN DASHBOARD
   // =========================================================
 
   {
     id: 3,
 
-    title: "E-Commerce Platform",
+    title: "E-Commerce Application & Admin Dashboard",
 
     category: "web",
 
@@ -259,19 +264,21 @@ export const projects: Project[] = [
       "Eloquent ORM",
       "Service Layer",
       "Database Design",
+      "Request Validation",
+      "Authorization",
     ],
 
     description:
-      "A web-based e-commerce platform focused on building a structured backend for products, customers, shopping operations, and order management.",
+      "An e-commerce system consisting of a customer-facing application and an administrative dashboard. My work focused on developing the backend APIs, database structure, authentication, product and category management, shopping workflows, order processing, and the business logic connecting the application with the admin dashboard.",
 
     challenge:
-      "The platform needed reliable product and order management, secure authentication, database relationships, and well-structured APIs to support the main shopping workflows.",
+      "The system needed to support the main shopping workflow for customers while providing administrators with the ability to manage products, categories, users, and orders through a centralized dashboard.",
 
     solution:
-      "Developed the backend using Laravel and MySQL, implementing RESTful APIs, authentication, product management, category management, shopping cart workflows, order processing, database relationships, and service-based business logic.",
+      "Developed the backend using Laravel and MySQL, implementing RESTful APIs, authentication, authorization, product and category management, shopping cart workflows, order processing, database relationships, request validation, and service-based business logic for both the customer application and administrative dashboard.",
 
     outcome:
-      "Delivered a structured e-commerce backend that supports the core shopping operations and provides a scalable foundation for the application.",
+      "Built a structured e-commerce backend that connects the customer application with the admin dashboard and supports the core shopping, product, and order management workflows.",
 
     features: [
       "Customer authentication",
@@ -280,14 +287,76 @@ export const projects: Project[] = [
       "Shopping cart APIs",
       "Order management",
       "User management",
+      "Admin dashboard APIs",
+      "Product and category administration",
+      "Order administration",
       "Secure REST APIs",
+      "Request validation",
+      "Authorization",
       "Database relationship management",
       "Service-layer architecture",
     ],
 
-    image: ecommerceImage,
+    // No image for now
+    // No GitHub because the project is not uploaded
+    liveUrl: "#",
+  },
 
-    // المشروع غير مرفوع على GitHub
+  // =========================================================
+  // 4. CINEMA BOOKING SYSTEM
+  // =========================================================
+
+  {
+    id: 4,
+
+    title: "Cinema Booking System",
+
+    category: "web",
+
+    duration: "1.5 months",
+
+    role: "Backend Developer",
+
+    technologies: [
+      "Laravel",
+      "PHP",
+      "MySQL",
+      "REST API",
+      "Laravel Sanctum",
+      "Eloquent ORM",
+      "Service Layer",
+      "Database Design",
+      "Request Validation",
+      "Authorization",
+    ],
+
+    description:
+      "A cinema booking system developed to manage movies, showtimes, customers, and booking workflows through a structured backend. My work focused on developing the backend APIs, database relationships, authentication, validation, and the business logic required to manage the booking process.",
+
+    challenge:
+      "The system needed to organize movies and showtimes while allowing customers to interact with the booking system securely and ensuring that booking operations followed the required business rules.",
+
+    solution:
+      "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, authorization, database relationships, request validation, and service-layer business logic to manage cinema data and booking workflows.",
+
+    outcome:
+      "Built a structured cinema booking backend that provides the APIs and business logic required to support movie browsing, showtime management, customer interactions, and booking operations.",
+
+    features: [
+      "Customer authentication",
+      "Movie management",
+      "Showtime management",
+      "Cinema booking workflows",
+      "Booking management",
+      "RESTful API architecture",
+      "Request validation",
+      "Authorization",
+      "Database relationship management",
+      "Service-layer business logic",
+    ],
+
+    // No image for now
+    // No GitHub because the project is not uploaded
     liveUrl: "#",
   },
 ];
