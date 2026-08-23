@@ -10,7 +10,7 @@ export interface Stat {
 export const stats: Stat[] = [
   {
     label: "Total Projects",
-    value: "8",
+    value: "4",
   },
   {
     label: "Backend Technologies",
