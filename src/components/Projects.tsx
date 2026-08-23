@@ -7,14 +7,16 @@ import {
   Calendar,
   User,
   ChevronRight,
-  Filter,
-  X,
   Images,
+  X,
 } from "lucide-react";
+
 import { Project, projects } from "@/data/projects";
 import { Stat, stats } from "@/data/stats";
 
-// ================= Animations =================
+// ==============================
+// Animations
+// ==============================
 
 const transition: Transition = {
   duration: 0.6,
@@ -37,20 +39,22 @@ const fadeUp: Variants = {
   }),
 };
 
-// ================= Project Details Modal =================
+// ==============================
+// Project Details Modal
+// ==============================
 
 const ProjectDetails: React.FC<{
   project: Project;
   onClose: () => void;
 }> = ({ project, onClose }) => {
-  const [selectedImage, setSelectedImage] = useState(
-    project.image
-  );
+  const [selectedImage, setSelectedImage] = useState(project.image);
 
   const galleryImages =
     project.images && project.images.length > 0
       ? project.images
-      : [project.image];
+      : project.image
+      ? [project.image]
+      : [];
 
   return (
     <div
@@ -70,6 +74,7 @@ const ProjectDetails: React.FC<{
         <button
           onClick={onClose}
           className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:bg-black/80 transition-all"
+          aria-label="Close project details"
         >
           <X className="w-5 h-5 text-white" />
         </button>
@@ -80,9 +85,7 @@ const ProjectDetails: React.FC<{
           <div className="mb-8 pr-12">
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium">
-                {project.category === "web"
-                  ? "Web App"
-                  : "Mobile App"}
+                Backend Project
               </span>
 
               {project.role && (
@@ -103,13 +106,15 @@ const ProjectDetails: React.FC<{
 
           {/* Main Image */}
 
-          <div className="relative rounded-2xl overflow-hidden mb-5 bg-black/20">
-            <img
-              src={selectedImage}
-              alt={project.title}
-              className="w-full max-h-[500px] object-contain"
-            />
-          </div>
+          {galleryImages.length > 0 && (
+            <div className="relative rounded-2xl overflow-hidden mb-5 bg-black/20">
+              <img
+                src={selectedImage}
+                alt={project.title}
+                className="w-full max-h-[500px] object-contain"
+              />
+            </div>
+          )}
 
           {/* Gallery */}
 
@@ -152,7 +157,7 @@ const ProjectDetails: React.FC<{
           {/* Project Info */}
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Left */}
+            {/* Left Side */}
 
             <div className="space-y-6">
               {/* Duration */}
@@ -207,7 +212,7 @@ const ProjectDetails: React.FC<{
               </div>
             </div>
 
-            {/* Right */}
+            {/* Right Side */}
 
             <div>
               <h3 className="font-semibold text-foreground mb-4">
@@ -272,31 +277,29 @@ const ProjectDetails: React.FC<{
           {/* Links */}
 
           <div className="flex flex-wrap gap-4 mt-10 pt-6 border-t border-white/10">
-            {project.liveUrl &&
-              project.liveUrl !== "#" && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                  Live Demo
-                </a>
-              )}
+            {project.liveUrl && project.liveUrl !== "#" && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
+              >
+                <ExternalLink className="w-5 h-5" />
+                Live Demo
+              </a>
+            )}
 
-            {project.githubUrl &&
-              project.githubUrl !== "#" && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
-                >
-                  <Github className="w-5 h-5" />
-                  GitHub
-                </a>
-              )}
+            {project.githubUrl && project.githubUrl !== "#" && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
+              >
+                <Github className="w-5 h-5" />
+                GitHub
+              </a>
+            )}
           </div>
         </div>
       </motion.div>
@@ -304,7 +307,9 @@ const ProjectDetails: React.FC<{
   );
 };
 
-// ================= ProjectCard =================
+// ==============================
+// Project Card
+// ==============================
 
 const ProjectCard: React.FC<{
   project: Project;
@@ -325,87 +330,81 @@ const ProjectCard: React.FC<{
       whileInView="visible"
       viewport={{ once: true }}
     >
-      {/* Image */}
+      {/* Project Image */}
 
-      <div className="relative overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+      {project.image && (
+        <div className="relative overflow-hidden">
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+          />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-        {/* Category */}
+          {/* Screenshot Count */}
 
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
-            {project.category === "web"
-              ? "Web App"
-              : "Mobile App"}
-          </span>
-        </div>
-
-        {/* Gallery Indicator */}
-
-        {project.images &&
-          project.images.length > 1 && (
+          {project.images && project.images.length > 1 && (
             <div className="absolute bottom-4 right-4">
               <span className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs flex items-center gap-2">
                 <Images className="w-4 h-4" />
+
                 {project.images.length} Screenshots
               </span>
             </div>
           )}
-      </div>
+        </div>
+      )}
 
       {/* Content */}
 
       <div className="p-8 flex flex-col flex-1">
+        {/* Title + Links */}
+
         <div className="flex items-start justify-between mb-4 gap-4">
           <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
             {project.title}
           </h3>
 
           <div className="flex gap-2 shrink-0">
-            {project.liveUrl &&
-              project.liveUrl !== "#" && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="w-10 h-10 circle-primary flex items-center justify-center hover-glow transition-all duration-300"
-                >
-                  <ExternalLink className="w-5 h-5 text-white" />
-                </a>
-              )}
+            {project.liveUrl && project.liveUrl !== "#" && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="w-10 h-10 circle-primary flex items-center justify-center hover-glow transition-all duration-300"
+              >
+                <ExternalLink className="w-5 h-5 text-white" />
+              </a>
+            )}
 
-            {project.githubUrl &&
-              project.githubUrl !== "#" && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()}
-                  className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
-                >
-                  <Github className="w-5 h-5 text-white" />
-                </a>
-              )}
+            {project.githubUrl && project.githubUrl !== "#" && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
+              >
+                <Github className="w-5 h-5 text-white" />
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Duration / Role */}
+        {/* Duration + Role */}
 
         <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-1">
             <Calendar className="w-4 h-4" />
+
             <span>{project.duration}</span>
           </div>
 
           <div className="flex items-center gap-1">
             <User className="w-4 h-4" />
+
             <span>{project.role}</span>
           </div>
         </div>
@@ -442,6 +441,7 @@ const ProjectCard: React.FC<{
           className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 text-foreground font-medium flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300"
         >
           View Project Details
+
           <ChevronRight className="w-5 h-5" />
         </button>
       </div>
@@ -449,45 +449,9 @@ const ProjectCard: React.FC<{
   </Tilt>
 );
 
-// ================= ProjectFilters =================
-
-const ProjectFilters: React.FC<{
-  filters: { id: string; label: string }[];
-  activeFilter: string;
-  setActiveFilter: React.Dispatch<
-    React.SetStateAction<string>
-  >;
-}> = ({
-  filters,
-  activeFilter,
-  setActiveFilter,
-}) => (
-  <motion.div
-    className="flex flex-wrap justify-center gap-4 mb-12"
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true }}
-    variants={fadeUp}
-  >
-    {filters.map((filter) => (
-      <button
-        key={filter.id}
-        onClick={() => setActiveFilter(filter.id)}
-        className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
-          activeFilter === filter.id
-            ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
-            : "glass-card text-foreground hover-lift"
-        }`}
-      >
-        <Filter className="w-4 h-4" />
-
-        {filter.label}
-      </button>
-    ))}
-  </motion.div>
-);
-
-// ================= ProjectStats =================
+// ==============================
+// Project Stats
+// ==============================
 
 const ProjectStats: React.FC<{
   stats?: Stat[];
@@ -518,68 +482,13 @@ const ProjectStats: React.FC<{
   </motion.div>
 );
 
-// ================= Main Projects Component =================
+// ==============================
+// Main Projects Component
+// ==============================
 
 const Projects: React.FC = () => {
-  const [activeCategory, setActiveCategory] =
-    useState<string>("all");
-
-  const [activeTech, setActiveTech] =
-    useState<string>("all");
-
   const [selectedProject, setSelectedProject] =
     useState<Project | null>(null);
-
-  const categoryFilters = [
-    {
-      id: "all",
-      label: "All",
-    },
-    {
-      id: "web",
-      label: "Web Apps",
-    },
-    {
-      id: "mobile",
-      label: "Mobile Apps",
-    },
-  ];
-
-  const techFilters = [
-    {
-      id: "all",
-      label: "All",
-    },
-    {
-      id: "react",
-      label: "React",
-    },
-    {
-      id: "vanilla",
-      label: "Vanilla JS",
-    },
-  ];
-
-  // ================= Filtering =================
-
-  let filteredProjects = projects;
-
-  if (activeCategory !== "all") {
-    filteredProjects = filteredProjects.filter(
-      (project) =>
-        project.category === activeCategory
-    );
-  }
-
-  if (
-    activeCategory === "web" &&
-    activeTech !== "all"
-  ) {
-    filteredProjects = filteredProjects.filter(
-      (project) =>
-        project.techType === activeTech
-    );
-  }
 
   return (
     <>
@@ -596,7 +505,6 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="section-container relative z-10">
-
           {/* Section Header */}
 
           <motion.div
@@ -611,47 +519,24 @@ const Projects: React.FC = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A showcase of my latest work, featuring
-              web and mobile applications built with
-              modern technologies and software
-              engineering practices.
+              A selection of backend projects showcasing my experience
+              in building RESTful APIs, database-driven systems,
+              authentication, business logic, and scalable backend
+              architectures.
             </p>
           </motion.div>
 
-          {/* Category Filter */}
-
-          <ProjectFilters
-            filters={categoryFilters}
-            activeFilter={activeCategory}
-            setActiveFilter={(id) => {
-              setActiveCategory(id);
-              setActiveTech("all");
-            }}
-          />
-
-          {/* Technology Filter */}
-
-          {activeCategory === "web" && (
-            <ProjectFilters
-              filters={techFilters}
-              activeFilter={activeTech}
-              setActiveFilter={setActiveTech}
-            />
-          )}
-
-          {/* Projects Grid */}
+          {/* All Projects */}
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-            {filteredProjects.map(
-              (project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  onOpen={setSelectedProject}
-                />
-              )
-            )}
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                onOpen={setSelectedProject}
+              />
+            ))}
           </div>
 
           {/* Stats */}
@@ -660,14 +545,12 @@ const Projects: React.FC = () => {
         </div>
       </section>
 
-      {/* Project Modal */}
+      {/* Project Details Modal */}
 
       {selectedProject && (
         <ProjectDetails
           project={selectedProject}
-          onClose={() =>
-            setSelectedProject(null)
-          }
+          onClose={() => setSelectedProject(null)}
         />
       )}
     </>
