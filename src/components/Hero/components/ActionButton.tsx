@@ -6,6 +6,7 @@ interface ActionButtonProps {
   onClick?: () => void;
   variant?: "primary" | "secondary";
   href?: string;
+  download?: boolean;
 }
 
 export const ActionButton: React.FC<ActionButtonProps> = ({
@@ -14,11 +15,21 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,
   variant = "primary",
   href,
+  download = false,
 }) => (
   <motion.a
     href={href}
-    target={href && href.startsWith("http") ? "_blank" : undefined}
-    rel={href && href.startsWith("http") ? "noopener noreferrer" : undefined}
+    download={download ? "Esraa_Ghneem.pdf" : undefined}
+    target={
+      href && href.startsWith("http") && !download
+        ? "_blank"
+        : undefined
+    }
+    rel={
+      href && href.startsWith("http") && !download
+        ? "noopener noreferrer"
+        : undefined
+    }
     onClick={onClick}
     whileHover={{
       scale: 1.05,
