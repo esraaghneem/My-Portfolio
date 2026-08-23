@@ -2,13 +2,14 @@
 
 import React from "react";
 
-
 import { experiences } from "@/data/experiences";
-import { skillCategories } from "@/data/skillCategories";
 import { Certificate } from "./components/types";
 import ExperienceCard from "./components/ExperienceCard";
-import SkillsList from "./components/SkillsList";
 import CertificatesAndAwards from "./components/CertificatesAndAwards";
+
+// ==============================
+// Certificates
+// ==============================
 
 const certificates: Certificate[] = [
   {
@@ -25,33 +26,52 @@ const certificates: Certificate[] = [
   },
 ];
 
+// ==============================
+// Experience Component
+// ==============================
+
 const Experience: React.FC = () => {
   return (
     <section id="experience" className="section-spacing">
       <div className="section-container">
+
+        {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-display gradient-text mb-6">
-            Experience & Skills
+            Experience & Certifications
           </h2>
+
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            My professional journey in frontend development.
+            My professional experience, technical growth, and continuous
+            development in software engineering.
           </p>
         </div>
 
         <div className="space-y-16">
-          {/* Experience Section */}
-          <div className="space-y-8">
 
+          {/* =========================
+              Professional Experience
+          ========================== */}
+
+          <div className="space-y-8">
             {experiences.map((exp, idx) => (
-              <ExperienceCard key={idx} experience={exp} />
+              <ExperienceCard
+                key={idx}
+                experience={exp}
+              />
             ))}
           </div>
 
-          {/* Skills + Certificates */}
-          <div className="grid lg:grid-cols-2 gap-8">
-            <SkillsList categories={skillCategories} />
-            <CertificatesAndAwards certificates={certificates} />
+          {/* =========================
+              Certifications
+          ========================== */}
+
+          <div className="max-w-3xl mx-auto">
+            <CertificatesAndAwards
+              certificates={certificates}
+            />
           </div>
+
         </div>
       </div>
     </section>
