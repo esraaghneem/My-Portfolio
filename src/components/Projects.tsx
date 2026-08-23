@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, Variants, Transition, AnimatePresence } from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 import {
   ExternalLink,
@@ -8,15 +8,9 @@ import {
   User,
   ChevronRight,
   Filter,
-  Images,
   X,
-  ShieldCheck,
-  Users,
-  ClipboardList,
-  BedDouble,
-  Bell,
+  Images,
 } from "lucide-react";
-
 import { Project, projects } from "@/data/projects";
 import { Stat, stats } from "@/data/stats";
 
@@ -43,386 +37,431 @@ const fadeUp: Variants = {
   }),
 };
 
-// =========================================================
-// Hotel Screenshot Descriptions
-// =========================================================
+// ================= Project Details Modal =================
 
-const hotelImageDescriptions = [
-  {
-    title: "General Manager Dashboard",
-    description:
-      "Centralized dashboard for monitoring hotel operations, managing departments, staff, bookings, and system-wide activities according to management permissions.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Department Dashboard",
-    description:
-      "Department-specific workspace where managers can monitor their team's operations and access features according to their assigned role and department.",
-    icon: Users,
-  },
-  {
-    title: "Room Booking",
-    description:
-      "Customer-facing room booking workflow for browsing available rooms and creating hotel reservations.",
-    icon: BedDouble,
-  },
-  {
-    title: "Customer Service Request",
-    description:
-      "Customers can submit service requests related to their active booking, which are routed to the appropriate hotel department.",
-    icon: Bell,
-  },
-  {
-    title: "Staff Tasks",
-    description:
-      "Employees receive assigned tasks generated from customer requests and operational workflows, with task distribution based on availability, workload, department, and shift status.",
-    icon: ClipboardList,
-  },
-];
-
-// =========================================================
-// Hotel Gallery
-// =========================================================
-
-const HotelGallery: React.FC<{
+const ProjectDetails: React.FC<{
   project: Project;
   onClose: () => void;
 }> = ({ project, onClose }) => {
-  const [activeImage, setActiveImage] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(
+    project.image
+  );
 
-  const images = project.images || [project.image];
+  const galleryImages =
+    project.images && project.images.length > 0
+      ? project.images
+      : [project.image];
 
   return (
-    <motion.div
-      className="mt-8 border-t border-white/10 pt-8"
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
+    <div
+      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+      onClick={onClose}
     >
-      {/* Gallery Header */}
-
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h4 className="text-xl font-bold text-foreground">
-            System Screenshots
-          </h4>
-
-          <p className="text-sm text-muted-foreground mt-1">
-            A look at the main workflows and dashboards.
-          </p>
-        </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 30 }}
+        transition={{ duration: 0.3 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-6xl max-h-[92vh] overflow-y-auto glass-card rounded-3xl border border-white/10 bg-surface shadow-2xl"
+      >
+        {/* Close Button */}
 
         <button
           onClick={onClose}
-          className="w-9 h-9 rounded-full glass-card flex items-center justify-center hover-scale"
-          aria-label="Close gallery"
+          className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:bg-black/80 transition-all"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 text-white" />
         </button>
-      </div>
 
-      {/* Main Image */}
+        <div className="p-6 md:p-8">
+          {/* Header */}
 
-      <motion.div
-        key={activeImage}
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
-        className="relative overflow-hidden rounded-2xl border border-white/10 mb-5"
-      >
-        <img
-          src={images[activeImage]}
-          alt={
-            hotelImageDescriptions[activeImage]?.title ||
-            `${project.title} screenshot`
-          }
-          className="w-full max-h-[500px] object-cover"
-        />
-      </motion.div>
+          <div className="mb-8 pr-12">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium">
+                {project.category === "web"
+                  ? "Web App"
+                  : "Mobile App"}
+              </span>
 
-      {/* Thumbnails */}
+              {project.role && (
+                <span className="px-3 py-1 glass-card rounded-full text-sm text-muted-foreground">
+                  {project.role}
+                </span>
+              )}
+            </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-6">
-        {images.map((image, index) => (
-          <button
-            key={index}
-            onClick={() => setActiveImage(index)}
-            className={`relative overflow-hidden rounded-xl border-2 transition-all duration-300 ${
-              activeImage === index
-                ? "border-primary scale-[1.02]"
-                : "border-transparent opacity-70 hover:opacity-100"
-            }`}
-          >
+            <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
+              {project.title}
+            </h2>
+
+            <p className="text-muted-foreground leading-relaxed max-w-4xl">
+              {project.description}
+            </p>
+          </div>
+
+          {/* Main Image */}
+
+          <div className="relative rounded-2xl overflow-hidden mb-5 bg-black/20">
             <img
-              src={image}
-              alt={`Screenshot ${index + 1}`}
-              className="w-full h-20 object-cover"
+              src={selectedImage}
+              alt={project.title}
+              className="w-full max-h-[500px] object-contain"
             />
-          </button>
-        ))}
-      </div>
+          </div>
 
-      {/* Screenshot Description */}
+          {/* Gallery */}
 
-      {hotelImageDescriptions[activeImage] && (
-        <motion.div
-          key={`description-${activeImage}`}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-card p-5 rounded-2xl"
-        >
-          <div className="flex items-start gap-4">
-            {React.createElement(
-              hotelImageDescriptions[activeImage].icon,
-              {
-                className: "w-6 h-6 text-primary mt-1 shrink-0",
-              }
-            )}
+          {galleryImages.length > 1 && (
+            <div className="mb-10">
+              <div className="flex items-center gap-2 mb-4">
+                <Images className="w-5 h-5 text-primary" />
+
+                <h3 className="text-lg font-semibold text-foreground">
+                  Project Screenshots
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+                {galleryImages.map((image, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedImage(image)}
+                    className={`relative rounded-xl overflow-hidden border-2 transition-all ${
+                      selectedImage === image
+                        ? "border-primary scale-[1.02]"
+                        : "border-white/10 hover:border-white/30"
+                    }`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${project.title} screenshot ${index + 1}`}
+                      className="w-full h-24 md:h-28 object-cover"
+                    />
+
+                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
+                      Screenshot {index + 1}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Project Info */}
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Left */}
+
+            <div className="space-y-6">
+              {/* Duration */}
+
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="w-5 h-5 text-primary" />
+
+                  <h3 className="font-semibold text-foreground">
+                    Duration
+                  </h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {project.duration}
+                </p>
+              </div>
+
+              {/* Role */}
+
+              <div>
+                <div className="flex items-center gap-2 mb-2">
+                  <User className="w-5 h-5 text-primary" />
+
+                  <h3 className="font-semibold text-foreground">
+                    Role
+                  </h3>
+                </div>
+
+                <p className="text-muted-foreground">
+                  {project.role}
+                </p>
+              </div>
+
+              {/* Technologies */}
+
+              <div>
+                <h3 className="font-semibold text-foreground mb-3">
+                  Technologies
+                </h3>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Right */}
 
             <div>
-              <h5 className="font-bold text-foreground mb-1">
-                {hotelImageDescriptions[activeImage].title}
-              </h5>
+              <h3 className="font-semibold text-foreground mb-4">
+                Key Features
+              </h3>
 
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {hotelImageDescriptions[activeImage].description}
-              </p>
-            </div>
-          </div>
-        </motion.div>
-      )}
-    </motion.div>
-  );
-};
+              <ul className="space-y-3">
+                {project.features.map((feature, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 text-sm text-muted-foreground"
+                  >
+                    <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
 
-// =========================================================
-// ProjectCard
-// =========================================================
-
-const ProjectCard: React.FC<{
-  project: Project;
-  index: number;
-}> = ({ project, index }) => {
-  const [showGallery, setShowGallery] = useState(false);
-
-  const isHotel = project.id === 1;
-
-  return (
-    <Tilt
-      tiltMaxAngleX={6}
-      tiltMaxAngleY={6}
-      scale={1.03}
-      transitionSpeed={250}
-    >
-      <motion.div
-        className={`glass-card rounded-3xl overflow-hidden group
-        bg-gradient-to-br from-purple-500/10 via-fuchsia-500/10 to-transparent
-        border border-white/10 shadow-xl flex flex-col h-full
-        ${isHotel ? "lg:col-span-2" : ""}`}
-        custom={index}
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-      >
-        {/* =====================================================
-            Project Image
-        ===================================================== */}
-
-        <div className="relative overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
-              isHotel ? "h-80" : "h-64"
-            }`}
-          />
-
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-
-          {/* Category */}
-
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1 bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white rounded-full text-sm font-medium shadow-md">
-              {project.category === "web" ? "Web App" : "Mobile App"}
-            </span>
-          </div>
-
-          {/* Featured Badge */}
-
-          {isHotel && (
-            <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 bg-black/50 backdrop-blur-md text-white rounded-full text-sm font-semibold border border-white/20">
-                Featured Project
-              </span>
-            </div>
-          )}
-        </div>
-
-        {/* =====================================================
-            Content
-        ===================================================== */}
-
-        <div className="p-8 flex flex-col flex-1">
-          {/* Title + Links */}
-
-          <div className="flex items-start justify-between gap-4 mb-4">
-            <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-              {project.title}
-            </h3>
-
-            <div className="flex gap-2 shrink-0">
-              {project.liveUrl && project.liveUrl !== "#" && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Live project"
-                  className="w-10 h-10 circle-primary flex items-center justify-center hover-glow transition-all duration-300"
-                >
-                  <ExternalLink className="w-5 h-5 text-white" />
-                </a>
-              )}
-
-              {project.githubUrl && project.githubUrl !== "#" && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub repository"
-                  className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
-                >
-                  <Github className="w-5 h-5 text-white" />
-                </a>
-              )}
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Duration + Role */}
+          {/* Challenge / Solution / Outcome */}
 
-          <div className="flex flex-wrap items-center gap-4 mb-5 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1">
-              <Calendar className="w-4 h-4" />
-              <span>{project.duration}</span>
-            </div>
-
-            <div className="flex items-center gap-1">
-              <User className="w-4 h-4" />
-              <span>{project.role}</span>
-            </div>
-          </div>
-
-          {/* Description */}
-
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            {project.description}
-          </p>
-
-          {/* Technologies */}
-
-          <div className="flex flex-wrap gap-2 mb-7">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
-          {/* =====================================================
-              Hotel Gallery Button
-          ===================================================== */}
-
-          {isHotel && project.images && project.images.length > 0 && (
-            <button
-              onClick={() => setShowGallery((prev) => !prev)}
-              className="w-full mb-7 px-5 py-3 rounded-xl
-              bg-gradient-to-r from-purple-500 to-fuchsia-500
-              text-white font-semibold flex items-center justify-center
-              gap-2 hover:opacity-90 transition-all duration-300"
-            >
-              <Images className="w-5 h-5" />
-
-              {showGallery
-                ? "Hide System Screenshots"
-                : `View System Screenshots (${project.images.length})`}
-            </button>
-          )}
-
-          {/* =====================================================
-              Challenge / Solution / Outcome
-          ===================================================== */}
-
-          <div className="space-y-5 mt-auto">
+          <div className="grid md:grid-cols-3 gap-6 mt-10">
             {project.challenge && (
-              <div>
-                <h4 className="font-semibold text-foreground flex items-center gap-2">
-                  <ChevronRight className="w-4 h-4 text-primary" />
+              <div className="glass-card p-5 rounded-2xl border border-white/10">
+                <h3 className="font-semibold text-foreground mb-3">
                   Challenge
-                </h4>
+                </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.challenge}
                 </p>
               </div>
             )}
 
             {project.solution && (
-              <div>
-                <h4 className="font-semibold text-foreground flex items-center gap-2">
-                  <ChevronRight className="w-4 h-4 text-primary" />
+              <div className="glass-card p-5 rounded-2xl border border-white/10">
+                <h3 className="font-semibold text-foreground mb-3">
                   Solution
-                </h4>
+                </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.solution}
                 </p>
               </div>
             )}
 
             {project.outcome && (
-              <div>
-                <h4 className="font-semibold text-foreground flex items-center gap-2">
-                  <ChevronRight className="w-4 h-4 text-primary" />
+              <div className="glass-card p-5 rounded-2xl border border-white/10">
+                <h3 className="font-semibold text-foreground mb-3">
                   Outcome
-                </h4>
+                </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   {project.outcome}
                 </p>
               </div>
             )}
           </div>
 
-          {/* =====================================================
-              Hotel Gallery
-          ===================================================== */}
+          {/* Links */}
 
-          <AnimatePresence>
-            {isHotel && showGallery && (
-              <HotelGallery
-                project={project}
-                onClose={() => setShowGallery(false)}
-              />
-            )}
-          </AnimatePresence>
+          <div className="flex flex-wrap gap-4 mt-10 pt-6 border-t border-white/10">
+            {project.liveUrl &&
+              project.liveUrl !== "#" && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  Live Demo
+                </a>
+              )}
+
+            {project.githubUrl &&
+              project.githubUrl !== "#" && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
+                >
+                  <Github className="w-5 h-5" />
+                  GitHub
+                </a>
+              )}
+          </div>
         </div>
       </motion.div>
-    </Tilt>
+    </div>
   );
 };
 
-// =========================================================
-// ProjectFilters
-// =========================================================
+// ================= ProjectCard =================
+
+const ProjectCard: React.FC<{
+  project: Project;
+  index: number;
+  onOpen: (project: Project) => void;
+}> = ({ project, index, onOpen }) => (
+  <Tilt
+    tiltMaxAngleX={6}
+    tiltMaxAngleY={6}
+    scale={1.03}
+    transitionSpeed={250}
+  >
+    <motion.div
+      className="glass-card rounded-3xl overflow-hidden group bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent border border-white/10 shadow-xl flex flex-col h-full"
+      custom={index}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      {/* Image */}
+
+      <div className="relative overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+        {/* Category */}
+
+        <div className="absolute top-4 left-4">
+          <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
+            {project.category === "web"
+              ? "Web App"
+              : "Mobile App"}
+          </span>
+        </div>
+
+        {/* Gallery Indicator */}
+
+        {project.images &&
+          project.images.length > 1 && (
+            <div className="absolute bottom-4 right-4">
+              <span className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs flex items-center gap-2">
+                <Images className="w-4 h-4" />
+                {project.images.length} Screenshots
+              </span>
+            </div>
+          )}
+      </div>
+
+      {/* Content */}
+
+      <div className="p-8 flex flex-col flex-1">
+        <div className="flex items-start justify-between mb-4 gap-4">
+          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+            {project.title}
+          </h3>
+
+          <div className="flex gap-2 shrink-0">
+            {project.liveUrl &&
+              project.liveUrl !== "#" && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="w-10 h-10 circle-primary flex items-center justify-center hover-glow transition-all duration-300"
+                >
+                  <ExternalLink className="w-5 h-5 text-white" />
+                </a>
+              )}
+
+            {project.githubUrl &&
+              project.githubUrl !== "#" && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
+                >
+                  <Github className="w-5 h-5 text-white" />
+                </a>
+              )}
+          </div>
+        </div>
+
+        {/* Duration / Role */}
+
+        <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+          <div className="flex items-center gap-1">
+            <Calendar className="w-4 h-4" />
+            <span>{project.duration}</span>
+          </div>
+
+          <div className="flex items-center gap-1">
+            <User className="w-4 h-4" />
+            <span>{project.role}</span>
+          </div>
+        </div>
+
+        {/* Description */}
+
+        <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
+          {project.description}
+        </p>
+
+        {/* Technologies */}
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {project.technologies.slice(0, 6).map((tech) => (
+            <span
+              key={tech}
+              className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
+            >
+              {tech}
+            </span>
+          ))}
+
+          {project.technologies.length > 6 && (
+            <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm">
+              +{project.technologies.length - 6}
+            </span>
+          )}
+        </div>
+
+        {/* View Details */}
+
+        <button
+          onClick={() => onOpen(project)}
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 text-foreground font-medium flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300"
+        >
+          View Project Details
+          <ChevronRight className="w-5 h-5" />
+        </button>
+      </div>
+    </motion.div>
+  </Tilt>
+);
+
+// ================= ProjectFilters =================
 
 const ProjectFilters: React.FC<{
   filters: { id: string; label: string }[];
   activeFilter: string;
-  setActiveFilter: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ filters, activeFilter, setActiveFilter }) => (
+  setActiveFilter: React.Dispatch<
+    React.SetStateAction<string>
+  >;
+}> = ({
+  filters,
+  activeFilter,
+  setActiveFilter,
+}) => (
   <motion.div
     className="flex flex-wrap justify-center gap-4 mb-12"
     initial="hidden"
@@ -436,7 +475,7 @@ const ProjectFilters: React.FC<{
         onClick={() => setActiveFilter(filter.id)}
         className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
           activeFilter === filter.id
-            ? "bg-gradient-to-r from-purple-500 to-fuchsia-500 text-white shadow-lg"
+            ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg"
             : "glass-card text-foreground hover-lift"
         }`}
       >
@@ -448,9 +487,7 @@ const ProjectFilters: React.FC<{
   </motion.div>
 );
 
-// =========================================================
-// ProjectStats
-// =========================================================
+// ================= ProjectStats =================
 
 const ProjectStats: React.FC<{
   stats?: Stat[];
@@ -481,9 +518,7 @@ const ProjectStats: React.FC<{
   </motion.div>
 );
 
-// =========================================================
-// Main Projects Component
-// =========================================================
+// ================= Main Projects Component =================
 
 const Projects: React.FC = () => {
   const [activeCategory, setActiveCategory] =
@@ -492,7 +527,8 @@ const Projects: React.FC = () => {
   const [activeTech, setActiveTech] =
     useState<string>("all");
 
-  // ================= Filters =================
+  const [selectedProject, setSelectedProject] =
+    useState<Project | null>(null);
 
   const categoryFilters = [
     {
@@ -530,7 +566,8 @@ const Projects: React.FC = () => {
 
   if (activeCategory !== "all") {
     filteredProjects = filteredProjects.filter(
-      (project) => project.category === activeCategory
+      (project) =>
+        project.category === activeCategory
     );
   }
 
@@ -539,87 +576,101 @@ const Projects: React.FC = () => {
     activeTech !== "all"
   ) {
     filteredProjects = filteredProjects.filter(
-      (project) => project.techType === activeTech
+      (project) =>
+        project.techType === activeTech
     );
   }
 
-  // ================= Render =================
-
   return (
-    <section
-      id="projects"
-      className="section-spacing bg-surface relative overflow-hidden"
-    >
-      {/* Background Glow */}
+    <>
+      <section
+        id="projects"
+        className="section-spacing bg-surface relative overflow-hidden"
+      >
+        {/* Background Glow */}
 
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
 
-        <div className="absolute w-96 h-96 bg-fuchsia-500/20 blur-[120px] rounded-full bottom-0 right-0 animate-pulse delay-1000" />
-      </div>
-
-      <div className="section-container relative z-10">
-
-        {/* Section Header */}
-
-        <motion.div
-          className="text-center mb-16"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-          <h2 className="text-display gradient-text mb-6">
-            My Projects
-          </h2>
-
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            A selection of projects showcasing my experience in
-            backend development, API design, software architecture,
-            and modern application development.
-          </p>
-        </motion.div>
-
-        {/* Category Filters */}
-
-        <ProjectFilters
-          filters={categoryFilters}
-          activeFilter={activeCategory}
-          setActiveFilter={(id) => {
-            setActiveCategory(id);
-            setActiveTech("all");
-          }}
-        />
-
-        {/* Web Technology Filters */}
-
-        {activeCategory === "web" && (
-          <ProjectFilters
-            filters={techFilters}
-            activeFilter={activeTech}
-            setActiveFilter={setActiveTech}
-          />
-        )}
-
-        {/* Projects */}
-
-        <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-          {filteredProjects.map(
-            (project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-              />
-            )
-          )}
+          <div className="absolute w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full bottom-0 right-0 animate-pulse delay-1000" />
         </div>
 
-        {/* Stats */}
+        <div className="section-container relative z-10">
 
-        <ProjectStats stats={stats} />
-      </div>
-    </section>
+          {/* Section Header */}
+
+          <motion.div
+            className="text-center mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+          >
+            <h2 className="text-display gradient-text mb-6">
+              My Projects
+            </h2>
+
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              A showcase of my latest work, featuring
+              web and mobile applications built with
+              modern technologies and software
+              engineering practices.
+            </p>
+          </motion.div>
+
+          {/* Category Filter */}
+
+          <ProjectFilters
+            filters={categoryFilters}
+            activeFilter={activeCategory}
+            setActiveFilter={(id) => {
+              setActiveCategory(id);
+              setActiveTech("all");
+            }}
+          />
+
+          {/* Technology Filter */}
+
+          {activeCategory === "web" && (
+            <ProjectFilters
+              filters={techFilters}
+              activeFilter={activeTech}
+              setActiveFilter={setActiveTech}
+            />
+          )}
+
+          {/* Projects Grid */}
+
+          <div className="grid lg:grid-cols-2 gap-8 items-stretch">
+            {filteredProjects.map(
+              (project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  onOpen={setSelectedProject}
+                />
+              )
+            )}
+          </div>
+
+          {/* Stats */}
+
+          <ProjectStats stats={stats} />
+        </div>
+      </section>
+
+      {/* Project Modal */}
+
+      {selectedProject && (
+        <ProjectDetails
+          project={selectedProject}
+          onClose={() =>
+            setSelectedProject(null)
+          }
+        />
+      )}
+    </>
   );
 };
 
