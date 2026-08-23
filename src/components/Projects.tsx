@@ -47,14 +47,9 @@ const ProjectDetails: React.FC<{
   project: Project;
   onClose: () => void;
 }> = ({ project, onClose }) => {
-  const [selectedImage, setSelectedImage] = useState(project.image);
-
-  /*
-   * كل الصور الموجودة ضمن imageGroups
-   * رح تنعرض بدون حذف أي صورة.
-   */
-  const allImages =
-    project.imageGroups?.flatMap((group) => group.images) ?? [];
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    project.image
+  );
 
   return (
     <div
@@ -126,18 +121,21 @@ const ProjectDetails: React.FC<{
           </div>
 
           {/* =========================
-              Main Selected Image
+              Main Image
+              Only shown if project has image
           ========================== */}
 
-          <div className="relative rounded-2xl overflow-hidden mb-8 bg-black/20 border border-white/10">
+          {selectedImage && (
+            <div className="relative rounded-2xl overflow-hidden mb-8 bg-black/20 border border-white/10">
 
-            <img
-              src={selectedImage}
-              alt={project.title}
-              className="w-full max-h-[520px] object-contain"
-            />
+              <img
+                src={selectedImage}
+                alt={project.title}
+                className="w-full max-h-[520px] object-contain"
+              />
 
-          </div>
+            </div>
+          )}
 
           {/* =========================
               Screenshot Groups
@@ -162,6 +160,7 @@ const ProjectDetails: React.FC<{
                         </div>
 
                         <div>
+
                           <h3 className="text-xl font-semibold text-foreground">
                             {group.title}
                           </h3>
@@ -172,6 +171,7 @@ const ProjectDetails: React.FC<{
                               ? "Screenshot"
                               : "Screenshots"}
                           </p>
+
                         </div>
 
                       </div>
@@ -417,8 +417,11 @@ const ProjectDetails: React.FC<{
                     rel="noopener noreferrer"
                     className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
                   >
+
                     <ExternalLink className="w-5 h-5" />
+
                     Live Demo
+
                   </a>
                 )}
 
@@ -431,8 +434,11 @@ const ProjectDetails: React.FC<{
                   rel="noopener noreferrer"
                   className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
                 >
+
                   <Github className="w-5 h-5" />
+
                   GitHub
+
                 </a>
               )}
 
@@ -466,6 +472,10 @@ const ProjectCard: React.FC<{
       0
     ) ?? 0;
 
+  const hasImage =
+    Boolean(project.image) ||
+    screenshotCount > 0;
+
   return (
     <Tilt
       tiltMaxAngleX={6}
@@ -487,45 +497,48 @@ const ProjectCard: React.FC<{
 
         {/* =========================
             Project Image
+            Only for projects that have images
         ========================== */}
 
-        <div className="relative overflow-hidden">
+        {hasImage && project.image && (
+          <div className="relative overflow-hidden">
 
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-          />
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+            />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-          {/* Backend Badge */}
+            {/* Backend Badge */}
 
-          <div className="absolute top-4 left-4">
+            <div className="absolute top-4 left-4">
 
-            <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
-              Backend Project
-            </span>
-
-          </div>
-
-          {/* Screenshot Count */}
-
-          {screenshotCount > 0 && (
-            <div className="absolute bottom-4 right-4">
-
-              <span className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs flex items-center gap-2">
-
-                <Images className="w-4 h-4" />
-
-                {screenshotCount} Screenshots
-
+              <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
+                Backend Project
               </span>
 
             </div>
-          )}
 
-        </div>
+            {/* Screenshot Count */}
+
+            {screenshotCount > 0 && (
+              <div className="absolute bottom-4 right-4">
+
+                <span className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs flex items-center gap-2">
+
+                  <Images className="w-4 h-4" />
+
+                  {screenshotCount} Screenshots
+
+                </span>
+
+              </div>
+            )}
+
+          </div>
+        )}
 
         {/* =========================
             Project Content
@@ -682,7 +695,6 @@ const ProjectStats: React.FC<{
           </div>
 
         </motion.div>
-
       )
     )}
 
@@ -724,7 +736,9 @@ const Projects: React.FC = () => {
 
         <div className="section-container relative z-10">
 
-          {/* Section Header */}
+          {/* =========================
+              Section Header
+          ========================== */}
 
           <motion.div
             className="text-center mb-16"
@@ -750,7 +764,9 @@ const Projects: React.FC = () => {
 
           </motion.div>
 
-          {/* Projects Grid */}
+          {/* =========================
+              Projects Grid
+          ========================== */}
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
@@ -767,7 +783,9 @@ const Projects: React.FC = () => {
 
           </div>
 
-          {/* Stats */}
+          {/* =========================
+              Stats
+          ========================== */}
 
           <ProjectStats stats={stats} />
 
