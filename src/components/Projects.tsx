@@ -14,7 +14,9 @@ import {
 import { Project, projects } from "@/data/projects";
 import { Stat, stats } from "@/data/stats";
 
-// ================= Animations =================
+// ==============================
+// Animations
+// ==============================
 
 const transition: Transition = {
   duration: 0.6,
@@ -37,7 +39,9 @@ const fadeUp: Variants = {
   }),
 };
 
-// ================= Project Details =================
+// ==============================
+// Project Details Modal
+// ==============================
 
 const ProjectDetails: React.FC<{
   project: Project;
@@ -51,17 +55,34 @@ const ProjectDetails: React.FC<{
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 30 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 30 }}
-        transition={{ duration: 0.3 }}
+        initial={{
+          opacity: 0,
+          scale: 0.95,
+          y: 30,
+        }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: 0,
+        }}
+        exit={{
+          opacity: 0,
+          scale: 0.95,
+          y: 30,
+        }}
+        transition={{
+          duration: 0.3,
+        }}
         onClick={(e) => e.stopPropagation()}
         className="relative w-full max-w-6xl max-h-[92vh] overflow-y-auto glass-card rounded-3xl border border-white/10 bg-surface shadow-2xl"
       >
-        {/* Close */}
+        {/* =========================
+            Close Button
+        ========================== */}
 
         <button
           onClick={onClose}
+          aria-label="Close project details"
           className="absolute top-5 right-5 z-20 w-11 h-11 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center hover:bg-black/80 transition-all"
         >
           <X className="w-5 h-5 text-white" />
@@ -69,10 +90,14 @@ const ProjectDetails: React.FC<{
 
         <div className="p-6 md:p-8">
 
-          {/* Header */}
+          {/* =========================
+              Project Header
+          ========================== */}
 
           <div className="mb-8 pr-12">
+
             <div className="flex flex-wrap items-center gap-3 mb-4">
+
               <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium">
                 Backend Project
               </span>
@@ -80,6 +105,7 @@ const ProjectDetails: React.FC<{
               <span className="px-3 py-1 glass-card rounded-full text-sm text-muted-foreground">
                 {project.role}
               </span>
+
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
@@ -89,126 +115,173 @@ const ProjectDetails: React.FC<{
             <p className="text-muted-foreground leading-relaxed max-w-4xl">
               {project.description}
             </p>
+
           </div>
 
-          {/* Main Image */}
+          {/* =========================
+              Main Image
+          ========================== */}
 
           <div className="relative rounded-2xl overflow-hidden mb-8 bg-black/20">
+
             <img
               src={selectedImage}
               alt={project.title}
               className="w-full max-h-[500px] object-contain"
             />
+
           </div>
 
-          {/* Image Groups */}
+          {/* =========================
+              Image Groups
+          ========================== */}
 
           {project.imageGroups &&
             project.imageGroups.length > 0 && (
               <div className="space-y-10 mb-10">
 
-                {project.imageGroups.map((group, groupIndex) => (
-                  <div key={groupIndex}>
+                {project.imageGroups.map(
+                  (group, groupIndex) => (
+                    <div key={groupIndex}>
 
-                    <div className="flex items-center gap-2 mb-4">
-                      <Images className="w-5 h-5 text-primary" />
+                      {/* Group Title */}
 
-                      <h3 className="text-lg font-semibold text-foreground">
-                        {group.title}
-                      </h3>
+                      <div className="flex items-center gap-2 mb-4">
+
+                        <Images className="w-5 h-5 text-primary" />
+
+                        <h3 className="text-lg font-semibold text-foreground">
+                          {group.title}
+                        </h3>
+
+                      </div>
+
+                      {/* Group Images */}
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+                        {group.images.map(
+                          (image, index) => (
+                            <button
+                              key={index}
+                              onClick={() =>
+                                setSelectedImage(
+                                  image
+                                )
+                              }
+                              className={`relative rounded-xl overflow-hidden border-2 transition-all ${
+                                selectedImage === image
+                                  ? "border-primary scale-[1.02]"
+                                  : "border-white/10 hover:border-white/30"
+                              }`}
+                            >
+
+                              <img
+                                src={image}
+                                alt={`${group.title} screenshot ${
+                                  index + 1
+                                }`}
+                                className="w-full h-40 md:h-48 object-cover"
+                              />
+
+                              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
+                                Screenshot {index + 1}
+                              </div>
+
+                            </button>
+                          )
+                        )}
+
+                      </div>
                     </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-
-                      {group.images.map((image, index) => (
-                        <button
-                          key={index}
-                          onClick={() =>
-                            setSelectedImage(image)
-                          }
-                          className={`relative rounded-xl overflow-hidden border-2 transition-all ${
-                            selectedImage === image
-                              ? "border-primary scale-[1.02]"
-                              : "border-white/10 hover:border-white/30"
-                          }`}
-                        >
-                          <img
-                            src={image}
-                            alt={`${group.title} screenshot ${
-                              index + 1
-                            }`}
-                            className="w-full h-40 md:h-48 object-cover"
-                          />
-
-                          <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
-                            Screenshot {index + 1}
-                          </div>
-                        </button>
-                      ))}
-
-                    </div>
-                  </div>
-                ))}
+                  )
+                )}
 
               </div>
             )}
 
-          {/* Project Info */}
+          {/* =========================
+              Project Information
+          ========================== */}
 
           <div className="grid md:grid-cols-2 gap-8">
 
-            {/* Left */}
+            {/* =====================
+                Left Column
+            ====================== */}
 
             <div className="space-y-6">
 
+              {/* Duration */}
+
               <div>
+
                 <div className="flex items-center gap-2 mb-2">
+
                   <Calendar className="w-5 h-5 text-primary" />
 
                   <h3 className="font-semibold text-foreground">
                     Duration
                   </h3>
+
                 </div>
 
                 <p className="text-muted-foreground">
                   {project.duration}
                 </p>
+
               </div>
 
+              {/* Role */}
+
               <div>
+
                 <div className="flex items-center gap-2 mb-2">
+
                   <User className="w-5 h-5 text-primary" />
 
                   <h3 className="font-semibold text-foreground">
                     Role
                   </h3>
+
                 </div>
 
                 <p className="text-muted-foreground">
                   {project.role}
                 </p>
+
               </div>
 
+              {/* Technologies */}
+
               <div>
+
                 <h3 className="font-semibold text-foreground mb-3">
-                  Technologies
+                  Technologies & Backend
                 </h3>
 
                 <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+
+                  {project.technologies.map(
+                    (tech) => (
+                      <span
+                        key={tech}
+                        className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
+                      >
+                        {tech}
+                      </span>
+                    )
+                  )}
+
                 </div>
+
               </div>
 
             </div>
 
-            {/* Right */}
+            {/* =====================
+                Right Column
+            ====================== */}
 
             <div>
 
@@ -224,9 +297,13 @@ const ProjectDetails: React.FC<{
                       key={index}
                       className="flex items-start gap-2 text-sm text-muted-foreground"
                     >
+
                       <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
 
-                      <span>{feature}</span>
+                      <span>
+                        {feature}
+                      </span>
+
                     </li>
                   )
                 )}
@@ -234,13 +311,19 @@ const ProjectDetails: React.FC<{
               </ul>
 
             </div>
+
           </div>
 
-          {/* Challenge / Solution / Outcome */}
+          {/* =========================
+              Challenge / Solution / Outcome
+          ========================== */}
 
           <div className="grid md:grid-cols-3 gap-6 mt-10">
 
+            {/* Challenge */}
+
             <div className="glass-card p-5 rounded-2xl border border-white/10">
+
               <h3 className="font-semibold text-foreground mb-3">
                 Challenge
               </h3>
@@ -248,9 +331,13 @@ const ProjectDetails: React.FC<{
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.challenge}
               </p>
+
             </div>
 
+            {/* Solution */}
+
             <div className="glass-card p-5 rounded-2xl border border-white/10">
+
               <h3 className="font-semibold text-foreground mb-3">
                 Solution
               </h3>
@@ -258,9 +345,13 @@ const ProjectDetails: React.FC<{
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.solution}
               </p>
+
             </div>
 
+            {/* Outcome */}
+
             <div className="glass-card p-5 rounded-2xl border border-white/10">
+
               <h3 className="font-semibold text-foreground mb-3">
                 Outcome
               </h3>
@@ -268,40 +359,57 @@ const ProjectDetails: React.FC<{
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.outcome}
               </p>
+
             </div>
 
           </div>
 
-          {/* Links */}
+          {/* =========================
+              Project Links
+          ========================== */}
 
-          <div className="flex flex-wrap gap-4 mt-10 pt-6 border-t border-white/10">
+          {(project.liveUrl &&
+            project.liveUrl !== "#") ||
+          project.githubUrl ? (
+            <div className="flex flex-wrap gap-4 mt-10 pt-6 border-t border-white/10">
 
-            {project.liveUrl &&
-              project.liveUrl !== "#" && (
+              {/* Live Demo */}
+
+              {project.liveUrl &&
+                project.liveUrl !== "#" && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
+                  >
+
+                    <ExternalLink className="w-5 h-5" />
+
+                    Live Demo
+
+                  </a>
+                )}
+
+              {/* GitHub */}
+
+              {project.githubUrl && (
                 <a
-                  href={project.liveUrl}
+                  href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
+                  className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
                 >
-                  <ExternalLink className="w-5 h-5" />
-                  Live Demo
+
+                  <Github className="w-5 h-5" />
+
+                  GitHub
+
                 </a>
               )}
 
-            {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
-              >
-                <Github className="w-5 h-5" />
-                GitHub
-              </a>
-            )}
-
-          </div>
+            </div>
+          ) : null}
 
         </div>
       </motion.div>
@@ -309,198 +417,282 @@ const ProjectDetails: React.FC<{
   );
 };
 
-// ================= Project Card =================
+// ==============================
+// Project Card
+// ==============================
 
 const ProjectCard: React.FC<{
   project: Project;
   index: number;
   onOpen: (project: Project) => void;
-}> = ({ project, index, onOpen }) => (
-  <Tilt
-    tiltMaxAngleX={6}
-    tiltMaxAngleY={6}
-    scale={1.03}
-    transitionSpeed={250}
-  >
-    <motion.div
-      className="glass-card rounded-3xl overflow-hidden group bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent border border-white/10 shadow-xl flex flex-col h-full"
-      custom={index}
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+}> = ({
+  project,
+  index,
+  onOpen,
+}) => {
+
+  const screenshotCount =
+    project.imageGroups?.reduce(
+      (total, group) =>
+        total + group.images.length,
+      0
+    ) ?? 0;
+
+  return (
+    <Tilt
+      tiltMaxAngleX={6}
+      tiltMaxAngleY={6}
+      scale={1.03}
+      transitionSpeed={250}
     >
 
-      {/* Image */}
+      <motion.div
+        className="glass-card rounded-3xl overflow-hidden group bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent border border-white/10 shadow-xl flex flex-col h-full"
+        custom={index}
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{
+          once: true,
+        }}
+      >
 
-      <div className="relative overflow-hidden">
+        {/* =========================
+            Project Image
+        ========================== */}
 
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-        />
+        <div className="relative overflow-hidden">
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+          />
 
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
-            Backend Project
-          </span>
-        </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-        {project.imageGroups &&
-          project.imageGroups.length > 0 && (
+          {/* Backend Badge */}
+
+          <div className="absolute top-4 left-4">
+
+            <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
+              Backend Project
+            </span>
+
+          </div>
+
+          {/* Screenshot Count */}
+
+          {screenshotCount > 0 && (
             <div className="absolute bottom-4 right-4">
+
               <span className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs flex items-center gap-2">
+
                 <Images className="w-4 h-4" />
 
-                {project.imageGroups.reduce(
-                  (total, group) =>
-                    total + group.images.length,
-                  0
-                )}{" "}
-                Screenshots
+                {screenshotCount} Screenshots
+
               </span>
+
             </div>
           )}
 
-      </div>
+        </div>
 
-      {/* Content */}
+        {/* =========================
+            Project Content
+        ========================== */}
 
-      <div className="p-8 flex flex-col flex-1">
+        <div className="p-8 flex flex-col flex-1">
 
-        <div className="flex items-start justify-between mb-4 gap-4">
+          {/* Title + GitHub */}
 
-          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
-            {project.title}
-          </h3>
+          <div className="flex items-start justify-between mb-4 gap-4">
 
-          <div className="flex gap-2 shrink-0">
+            <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              {project.title}
+            </h3>
 
             {project.githubUrl && (
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
-              >
-                <Github className="w-5 h-5 text-white" />
-              </a>
+              <div className="flex gap-2 shrink-0">
+
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) =>
+                    e.stopPropagation()
+                  }
+                  aria-label={`${project.title} GitHub repository`}
+                  className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
+                >
+
+                  <Github className="w-5 h-5 text-white" />
+
+                </a>
+
+              </div>
             )}
 
           </div>
 
-        </div>
+          {/* =========================
+              Duration / Role
+          ========================== */}
 
-        {/* Duration / Role */}
+          <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-muted-foreground">
 
-        <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-1">
 
-          <div className="flex items-center gap-1">
-            <Calendar className="w-4 h-4" />
-            <span>{project.duration}</span>
-          </div>
+              <Calendar className="w-4 h-4" />
 
-          <div className="flex items-center gap-1">
-            <User className="w-4 h-4" />
-            <span>{project.role}</span>
-          </div>
-
-        </div>
-
-        {/* Description */}
-
-        <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
-          {project.description}
-        </p>
-
-        {/* Technologies */}
-
-        <div className="flex flex-wrap gap-2 mb-6">
-
-          {project.technologies
-            .slice(0, 6)
-            .map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
-              >
-                {tech}
+              <span>
+                {project.duration}
               </span>
-            ))}
 
-          {project.technologies.length > 6 && (
-            <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm">
-              +{project.technologies.length - 6}
-            </span>
-          )}
+            </div>
+
+            <div className="flex items-center gap-1">
+
+              <User className="w-4 h-4" />
+
+              <span>
+                {project.role}
+              </span>
+
+            </div>
+
+          </div>
+
+          {/* =========================
+              Description
+          ========================== */}
+
+          <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
+            {project.description}
+          </p>
+
+          {/* =========================
+              Technologies
+          ========================== */}
+
+          <div className="flex flex-wrap gap-2 mb-6">
+
+            {project.technologies
+              .slice(0, 6)
+              .map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm"
+                >
+                  {tech}
+                </span>
+              ))}
+
+            {project.technologies.length > 6 && (
+              <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-sm">
+                +
+                {project.technologies.length - 6}
+              </span>
+            )}
+
+          </div>
+
+          {/* =========================
+              View Details
+          ========================== */}
+
+          <button
+            onClick={() =>
+              onOpen(project)
+            }
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 text-foreground font-medium flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300"
+          >
+
+            View Project Details
+
+            <ChevronRight className="w-5 h-5" />
+
+          </button>
 
         </div>
 
-        {/* Details */}
+      </motion.div>
 
-        <button
-          onClick={() => onOpen(project)}
-          className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 text-foreground font-medium flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300"
-        >
-          View Project Details
+    </Tilt>
+  );
+};
 
-          <ChevronRight className="w-5 h-5" />
-        </button>
-
-      </div>
-    </motion.div>
-  </Tilt>
-);
-
-// ================= Project Stats =================
+// ==============================
+// Project Stats
+// ==============================
 
 const ProjectStats: React.FC<{
   stats?: Stat[];
-}> = ({ stats = [] }) => (
+}> = ({
+  stats = [],
+}) => (
+
   <motion.div
     className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true }}
+    viewport={{
+      once: true,
+    }}
     variants={fadeUp}
   >
-    {stats.map((stat, index) => (
-      <motion.div
-        key={index}
-        className="text-center glass-card p-6 rounded-2xl hover-scale"
-        custom={index}
-        variants={fadeUp}
-      >
-        <div className="text-3xl font-bold gradient-text mb-2">
-          {stat.value}
-        </div>
 
-        <div className="text-sm text-muted-foreground">
-          {stat.label}
-        </div>
-      </motion.div>
-    ))}
+    {stats.map(
+      (stat, index) => (
+
+        <motion.div
+          key={index}
+          className="text-center glass-card p-6 rounded-2xl hover-scale"
+          custom={index}
+          variants={fadeUp}
+        >
+
+          <div className="text-3xl font-bold gradient-text mb-2">
+            {stat.value}
+          </div>
+
+          <div className="text-sm text-muted-foreground">
+            {stat.label}
+          </div>
+
+        </motion.div>
+
+      )
+    )}
+
   </motion.div>
 );
 
-// ================= Main Projects =================
+// ==============================
+// Main Projects Component
+// ==============================
 
 const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] =
-    useState<Project | null>(null);
+
+  const [
+    selectedProject,
+    setSelectedProject,
+  ] = useState<Project | null>(null);
 
   return (
     <>
+
+      {/* =========================
+          Projects Section
+      ========================== */}
+
       <section
         id="projects"
         className="section-spacing bg-surface relative overflow-hidden"
       >
 
-        {/* Background */}
+        {/* Background Glow */}
 
         <div className="absolute inset-0 pointer-events-none">
 
@@ -512,13 +704,17 @@ const Projects: React.FC = () => {
 
         <div className="section-container relative z-10">
 
-          {/* Header */}
+          {/* =========================
+              Section Header
+          ========================== */}
 
           <motion.div
             className="text-center mb-16"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{
+              once: true,
+            }}
             variants={fadeUp}
           >
 
@@ -527,37 +723,46 @@ const Projects: React.FC = () => {
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A selection of my backend projects, focused on
-              Laravel, PHP, RESTful APIs, database design,
-              authentication, business logic, and scalable
+              A selection of my backend projects,
+              focused on Laravel, PHP, RESTful APIs,
+              database design, authentication,
+              business logic, and scalable
               application architecture.
             </p>
 
           </motion.div>
 
-          {/* Projects Grid */}
+          {/* =========================
+              Projects Grid
+          ========================== */}
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
-            {projects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                index={index}
-                onOpen={setSelectedProject}
-              />
-            ))}
+            {projects.map(
+              (project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  onOpen={setSelectedProject}
+                />
+              )
+            )}
 
           </div>
 
-          {/* Stats */}
+          {/* =========================
+              Stats
+          ========================== */}
 
           <ProjectStats stats={stats} />
 
         </div>
       </section>
 
-      {/* Modal */}
+      {/* =========================
+          Project Details Modal
+      ========================== */}
 
       {selectedProject && (
         <ProjectDetails
@@ -567,6 +772,7 @@ const Projects: React.FC = () => {
           }
         />
       )}
+
     </>
   );
 };
