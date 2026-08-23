@@ -8,6 +8,7 @@ interface SocialButtonProps {
   url: string;
   label: string;
 }
+
 const SocialButton: React.FC<SocialButtonProps> = ({
   icon: Icon,
   url,
@@ -29,11 +30,19 @@ interface QuickLinkProps {
   label: string;
   href: string;
 }
-const QuickLinkButton: React.FC<QuickLinkProps> = ({ label, href }) => {
+
+const QuickLinkButton: React.FC<QuickLinkProps> = ({
+  label,
+  href,
+}) => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
   return (
     <motion.button
       onClick={() => scrollToSection(href.substring(1))}
@@ -60,31 +69,46 @@ const Footer: React.FC = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      url: "https://www.linkedin.com/in/yumna-ataba-b263802aa",
+      url: "https://www.linkedin.com/in/esraa-ghneem-8b4839401",
     },
-    { icon: Github, label: "GitHub", url: "https://github.com/YumnaAtaba3" },
-    { icon: Mail, label: "Email", url: "mailto:yumnaataba33@gmail.com" },
+    {
+      icon: Github,
+      label: "GitHub",
+      url: "https://github.com/esraaghneem",
+    },
+    {
+      icon: Mail,
+      label: "Email",
+      url: "mailto:ghesraa02@gmail.com",
+    },
   ];
 
   const contactInfo = [
     "Damascus, Syria",
-    "+963 962 881 645",
-    "yumnaataba33@gmail.com",
+    "+963 966 927 407",
+    "ghesraa02@gmail.com",
   ];
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
   return (
     <footer className="bg-surface border-t border-border relative overflow-hidden">
       <ParticleSystem />
+
       {/* Floating subtle glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-72 h-72 bg-blue-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
+
         <div className="absolute w-72 h-72 bg-purple-500/20 blur-[120px] rounded-full bottom-0 right-0 animate-pulse delay-1000" />
       </div>
 
       <div className="section-container py-16 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
           {/* Brand & Socials */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -93,13 +117,15 @@ const Footer: React.FC = () => {
             className="lg:col-span-2"
           >
             <div className="text-2xl font-bold gradient-text mb-4">
-              Yumna Ataba
+              Esraa Ghneem
             </div>
+
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-              Frontend Developer passionate about creating beautiful,
-              functional, and user-friendly web and mobile applications using
-              modern technologies.
+              Backend Developer focused on building reliable, scalable, and
+              maintainable applications using modern backend technologies,
+              clean architecture, and solid software engineering practices.
             </p>
+
             <div className="flex gap-4">
               {socialLinks.map((social, i) => (
                 <SocialButton key={i} {...social} />
@@ -116,6 +142,7 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold text-foreground mb-4">
               Quick Links
             </h4>
+
             <ul className="space-y-2">
               {quickLinks.map((link, i) => (
                 <li key={i}>
@@ -134,16 +161,19 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold text-foreground mb-4">
               Contact
             </h4>
+
             <div className="space-y-2 text-sm text-muted-foreground">
               {contactInfo.map((item, i) => (
                 <p key={i}>{item}</p>
               ))}
             </div>
+
             <div className="mt-6">
               <div className="flex items-center gap-2 text-sm">
-                <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-success rounded-full animate-pulse" />
+
                 <span className="text-foreground font-medium">
-                  Available for Projects
+                  Available for Opportunities
                 </span>
               </div>
             </div>
@@ -152,10 +182,17 @@ const Footer: React.FC = () => {
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-border gap-2 md:gap-0">
+
           <div className="flex flex-col md:flex-row items-center gap-1 text-muted-foreground text-sm text-center md:text-left">
-            <span>© {currentYear} Yumna Ataba. Made with</span>
+            <span>
+              © {currentYear} Esraa Ghneem. Made with
+            </span>
+
             <Heart className="w-4 h-4 text-red-500 animate-pulse mx-auto md:mx-1" />
-            <span>and lots of coffee ☕</span>
+
+            <span>
+              and lots of coffee ☕
+            </span>
           </div>
 
           <motion.button
@@ -164,6 +201,7 @@ const Footer: React.FC = () => {
             whileHover={{ scale: 1.05 }}
           >
             Back to Top
+
             <ArrowUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform duration-300" />
           </motion.button>
         </div>
