@@ -4,6 +4,8 @@ import { Zap, Download } from "lucide-react";
 import { ActionButton } from "./ActionButton";
 import { DynamicCodeSnippet } from "./DynamicCodeSnippet";
 
+import cvFile from "../assets/Esraa_Ghneem.cv";
+
 interface HeroContentProps {
   scrollToSection: (sectionId: string) => void;
   coreTechs: string[];
@@ -82,7 +84,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
         label="Download CV"
         icon={Download}
         variant="secondary"
-        href="#"
+        href={cvFile}
       />
     </motion.div>
   </motion.div>
