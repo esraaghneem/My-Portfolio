@@ -3,28 +3,7 @@
 import React from "react";
 
 import { experiences } from "@/data/experiences";
-import { Certificate } from "./components/types";
 import ExperienceCard from "./components/ExperienceCard";
-import CertificatesAndAwards from "./components/CertificatesAndAwards";
-
-// ==============================
-// Certificates
-// ==============================
-
-const certificates: Certificate[] = [
-  {
-    name: "Meta Front-End Developer Professional Certificate",
-    issuer: "Meta (via Coursera)",
-    year: 2025,
-    url: "https://www.coursera.org/professional-certificates/meta-front-end-developer",
-  },
-  {
-    name: "IBM Front-End Development Certificate",
-    issuer: "IBM",
-    year: 2024,
-    url: "https://www.coursera.org/professional-certificates/ibm-frontend-developer",
-  },
-];
 
 // ==============================
 // Experience Component
@@ -38,12 +17,12 @@ const Experience: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
           <h2 className="text-display gradient-text mb-6">
-            Experience & Certifications
+            Experience
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            My professional experience, technical growth, and continuous
-            development in software engineering.
+            My professional experience, technical growth, and development
+            as a Backend Developer.
           </p>
         </div>
 
@@ -60,16 +39,6 @@ const Experience: React.FC = () => {
                 experience={exp}
               />
             ))}
-          </div>
-
-          {/* =========================
-              Certifications
-          ========================== */}
-
-          <div className="max-w-3xl mx-auto">
-            <CertificatesAndAwards
-              certificates={certificates}
-            />
           </div>
 
         </div>
