@@ -6,11 +6,11 @@ import {
   Server,
   Database,
   ShieldCheck,
-  GitBranch,
   GraduationCap,
 } from "lucide-react";
 
 // =================== Animations ===================
+
 const defaultTransition: Transition = {
   duration: 0.7,
   ease: "easeOut",
@@ -26,6 +26,7 @@ const fadeUp: Variants = {
 };
 
 // =================== Reusable Components ===================
+
 interface InfoCardProps {
   title: string;
   children: React.ReactNode;
@@ -49,6 +50,7 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, children }) => (
       <h4 className="text-lg font-semibold text-foreground mb-3">
         {title}
       </h4>
+
       {children}
     </motion.div>
   </Tilt>
@@ -141,6 +143,7 @@ const StatCard: React.FC<StatCardProps> = ({
 );
 
 // =================== Main Component ===================
+
 const About: React.FC = () => {
   const stats = [
     {
@@ -161,7 +164,7 @@ const About: React.FC = () => {
     {
       icon: GraduationCap,
       label: "Graduation",
-      value: "2026",
+      value: "2027",
     },
   ];
 
@@ -192,6 +195,7 @@ const About: React.FC = () => {
       className="relative section-spacing bg-surface overflow-hidden"
     >
       {/* Floating Gradient Orbs */}
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
 
@@ -201,6 +205,7 @@ const About: React.FC = () => {
       <div className="section-container relative z-10">
 
         {/* Header */}
+
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -226,6 +231,7 @@ const About: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* Left Column */}
+
           <motion.div
             className="space-y-6"
             initial="hidden"
@@ -258,6 +264,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Education */}
+
             <InfoCard title="Education">
               <div className="space-y-2">
                 <p className="font-medium text-foreground">
@@ -265,7 +272,7 @@ const About: React.FC = () => {
                 </p>
 
                 <p className="text-sm text-muted-foreground">
-                  Damascus University • 2021 - 2026
+                  Damascus University • 2022 - 2027
                 </p>
 
                 <p className="text-sm text-muted-foreground">
@@ -275,6 +282,7 @@ const About: React.FC = () => {
             </InfoCard>
 
             {/* Languages */}
+
             <InfoCard title="Languages">
               <div className="grid grid-cols-3 gap-4">
 
@@ -310,9 +318,11 @@ const About: React.FC = () => {
 
               </div>
             </InfoCard>
+
           </motion.div>
 
           {/* Right Column */}
+
           <motion.div
             className="space-y-8"
             initial="hidden"
@@ -322,6 +332,7 @@ const About: React.FC = () => {
           >
 
             {/* Highlights */}
+
             <div className="space-y-6">
               {highlights.map((item, i) => (
                 <motion.div
@@ -335,6 +346,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Stats */}
+
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, i) => (
                 <motion.div
