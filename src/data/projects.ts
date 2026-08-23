@@ -2,10 +2,15 @@
 // projects.ts
 // ==============================
 
+export interface ProjectImageGroup {
+  title: string;
+  images: string[];
+}
+
 export interface Project {
   id: number;
   title: string;
-  category: "web" | "mobile";
+  category: "web";
   duration: string;
   role: string;
   technologies: string[];
@@ -15,9 +20,9 @@ export interface Project {
   outcome: string;
   features: string[];
   image: string;
-  images?: string[];
-  liveUrl: string;
-  githubUrl: string;
+  imageGroups?: ProjectImageGroup[];
+  liveUrl?: string;
+  githubUrl?: string;
 }
 
 // ==============================
@@ -31,7 +36,7 @@ import hotelRoomBooking from "../assets/hotel-room-booking.png";
 import hotelServiceRequest from "../assets/hotel-service-request.png";
 import hotelStaffTasks from "../assets/hotel-staff-requests.png";
 
-// Existing project images
+// Other Projects
 import charityImage from "../assets/compliants.png";
 import ecommerceImage from "../assets/Screenshot 2025-11-03 122320.png";
 
@@ -65,7 +70,7 @@ export const projects: Project[] = [
       "Eloquent ORM",
       "Service Layer",
       "Role-Based Access Control",
-      "Task Assignment Algorithm"
+      "Task Assignment Algorithm",
     ],
 
     description:
@@ -92,22 +97,32 @@ export const projects: Project[] = [
       "General manager dashboard",
       "Department management",
       "Employee task management",
-      "RESTful API architecture"
+      "RESTful API architecture",
     ],
 
     image: hotelDashboardManager,
 
-    images: [
-      hotelDashboardManager,
-      hotelDashboardDepartment,
-      hotelRoomBooking,
-      hotelServiceRequest,
-      hotelStaffTasks
+    imageGroups: [
+      {
+        title: "Management Dashboard",
+        images: [
+          hotelDashboardManager,
+          hotelDashboardDepartment,
+        ],
+      },
+      {
+        title: "Customer & Staff Applications",
+        images: [
+          hotelRoomBooking,
+          hotelServiceRequest,
+          hotelStaffTasks,
+        ],
+      },
     ],
 
     liveUrl: "#",
 
-    githubUrl: "https://github.com/esraaghneem"
+    githubUrl: "https://github.com/esraaghneem",
   },
 
   // =========================================================
@@ -133,7 +148,7 @@ export const projects: Project[] = [
       "Laravel Sanctum",
       "Eloquent ORM",
       "Service Layer",
-      "Role-Based Access Control"
+      "Role-Based Access Control",
     ],
 
     description:
@@ -156,14 +171,12 @@ export const projects: Project[] = [
       "Campaign management",
       "Administrative dashboard APIs",
       "Secure REST APIs",
-      "Database relationship management"
+      "Database relationship management",
     ],
 
     image: charityImage,
 
     liveUrl: "#",
-
-    githubUrl: "https://github.com/esraaghneem"
   },
 
   // =========================================================
@@ -188,7 +201,7 @@ export const projects: Project[] = [
       "REST API",
       "Laravel Sanctum",
       "Eloquent ORM",
-      "Service Layer"
+      "Service Layer",
     ],
 
     description:
@@ -211,14 +224,11 @@ export const projects: Project[] = [
       "Order management",
       "User management",
       "Secure REST APIs",
-      "Database relationship management"
+      "Database relationship management",
     ],
 
     image: ecommerceImage,
 
     liveUrl: "#",
-
-    githubUrl: "https://github.com/esraaghneem"
-  }
-
+  },
 ];
