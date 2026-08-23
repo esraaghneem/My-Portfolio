@@ -1,87 +1,160 @@
-# Yumna Ataba Portfolio 💻
+# Esraa Ghneem – Backend Developer Portfolio 💻
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Vite](https://img.shields.io/badge/Vite-3.0.0-yellow)](https://vitejs.dev/)
-[![React](https://img.shields.io/badge/React-18.3-blue)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-18.3-blue)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-3.4.17-blue)](https://tailwindcss.com/)
-[![ShadCN UI](https://img.shields.io/badge/ShadCN-UI-purple)](https://shadcn.com/)
 
-A **modern, interactive, and responsive Frontend Developer portfolio** built using **Vite, React, TypeScript, Tailwind CSS**, and **ShadCN UI components**. This portfolio showcases projects, skills, and contact information with smooth animations and elegant glassmorphism design.
+A modern, interactive, and responsive developer portfolio built with React, TypeScript, Vite, and Tailwind CSS.
+
+The portfolio presents my experience, backend development skills, projects, and technical expertise with a clean and interactive design.
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Portfolio
 
-[View the live portfolio here](https://YumnaAtaba3.github.io/My-Portfolio)
+[View my portfolio](https://esraaghneem.github.io/My-Portfolio)
 
 ---
 
 ## ✨ Features
 
-- **About Section** – Professional introduction, education, and languages.  
-- **Projects Section** – Filterable web and mobile projects with live demos and GitHub links.  
-- **Skills Section** – Categorized skills with icons, plus additional technology tags.  
-- **Contact Section** – Interactive form with email integration, social links, and availability status.  
-- **Footer** – Quick links, social buttons, and smooth scroll-to-top functionality.  
-- **Animations** – Framer Motion powered transitions, hover effects, and floating elements.  
-- **Responsive Design** – Fully optimized for desktop, tablet, and mobile.  
+- **About Section** – Professional introduction, education, and background.
+- **Experience Section** – Professional experience and technical skills.
+- **Projects Section** – Selected web and mobile projects with technologies, challenges, solutions, and outcomes.
+- **Skills Section** – Backend development, databases, security, software engineering, and development tools.
+- **Contact Section** – Contact information, social links, and project inquiry form.
+- **Responsive Design** – Optimized for desktop, tablet, and mobile devices.
+- **Animations** – Interactive animations and smooth transitions using Framer Motion.
+- **Glassmorphism UI** – Modern visual design with interactive cards and effects.
 
 ---
 
 ## 🛠 Technologies
 
-- **React.js** – Component-based frontend framework  
-- **TypeScript** – Type-safe JavaScript  
-- **Vite** – Fast build and development tooling  
-- **Tailwind CSS** – Utility-first CSS framework  
-- **ShadCN UI** – Radix-based UI components  
-- **Framer Motion** – Smooth and interactive animations  
-- **Lucide Icons** – Clean, customizable icons  
-- **React Parallax Tilt** – Interactive tilt effects for projects  
-- **Mailto Integration** – Contact form opens default email client
-  ---
+### Backend
 
-## 📂 Project Structure
-## src/
-├─ components/
-│ ├─ About.tsx
-│ ├─ Projects.tsx
-│ ├─ Skills.tsx
-│ ├─ Contact.tsx
-│ └─ Footer.tsx
-├─ data/
-│ ├─ projects.ts
-│ └─ stats.ts
-├─ App.tsx
-├─ main.tsx
-└─ index.css
+- PHP
+- Laravel
+- RESTful APIs
+- MVC Architecture
+- Service Layer
+- Business Logic
+
+### Database
+
+- MySQL
+- Eloquent ORM
+- Database Design
+- SQL Queries
+- Database Relationships
+
+### Authentication & Security
+
+- Laravel Sanctum
+- Authentication
+- Authorization
+- Roles & Permissions
+- Middleware
+- Request Validation
+
+### Software Engineering
+
+- OOP
+- SOLID Principles
+- Design Patterns
+- Clean Architecture
+- Reusable Components
+- Error Handling
+
+### Tools
+
+- Git
+- GitHub
+- Postman
+- Jira
+- REST API Testing
+
+### Frontend Technologies
+
+- React.js
+- TypeScript
+- Tailwind CSS
+- JavaScript
+- HTML5
+- CSS3
 
 ---
+
+## 📂 Featured Project
+
+### Integrated Hotel Management System
+
+An integrated hotel management platform connecting customers, hotel management, departments, and staff through a unified system.
+
+#### Technologies
+
+- PHP
+- Laravel
+- MySQL
+- RESTful APIs
+- Laravel Sanctum
+- Eloquent ORM
+- Service Layer
+- Role-Based Access Control
+
+#### Key Features
+
+- Customer registration and authentication
+- Room booking management
+- Customer service requests
+- Staff and department management
+- Role-based access control
+- Staff shift management
+- Automated task assignment
+- Workload-based task distribution
+- Manager dashboards
+- Department dashboards
+- Employee task management
+
+[View the project on GitHub](https://github.com/esraaghneem/hotel-management-system)
+
+---
+
+## 📁 Other Projects
+
+The portfolio also includes projects in:
+
+- E-Commerce
+- Visitor Management
+- Complaints Management
+- Hotel & Travel Booking
+- Real Estate
+- Travel Landing Pages
+
+---
+
 ## 📬 Contact
 
-Email: yumnaataba33@gmail.com
+**Email:**  
+ghesraa02@gmail.com
 
-LinkedIn: linkedin.com/in/yumna-ataba-b263802aa
+**Phone:**  
++963966927407
 
-GitHub: github.com/YumnaAtaba3
+**LinkedIn:**  
+https://www.linkedin.com/in/esraa-ghneem-8b4839401
 
-## 📝 License
+**GitHub:**  
+https://github.com/esraaghneem
 
-This project is open-source and available under the MIT License.
-
-Made with ❤️ and lots of ☕ coffee by Yumna Ataba
 ---
+
 ## 🚀 Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
-git clone https://github.com/YumnaAtaba3/My-Portfolio.git
+git clone https://github.com/esraaghneem/My-Portfolio.git
 cd My-Portfolio
-
-npm install
-# or
-yarn install
----
-
