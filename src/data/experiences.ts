@@ -7,52 +7,73 @@ export interface ExperienceItem {
   achievements: string[];
   links?: { label: string; url: string }[];
 }
- 
- export const experiences: ExperienceItem[] = [
-     {
-      title: "Frontend Developer Trainee",
-      company: "IXCoders",
-      period: "Oct 2025 - Present · 2 mos",
-      location: "On-site",
-      description:
-        "Participating in iXcoder’s development team and contributing to collaborative training projects. Gaining hands-on experience in frontend development using HTML, CSS, JavaScript, and React. Building responsive and interactive web applications following best practices. Enhancing teamwork skills and practical experience in a professional development environment.",
-      achievements: [
-        "Hands-on experience in React, JavaScript, HTML, and CSS",
-        "Contributed to collaborative training projects",
-        "Built responsive and interactive web applications",
-        "Enhanced teamwork and Agile development skills",
-      ],
-      links: [{ label: "IXCoders", url: "https://ixcoders.com" }],
-    },
-    {
-      title: "Frontend Development Trainee",
-      company: "Sanad Youth سند الشباب",
-      period: "Aug 2025 - Present · 4 mos",
-      location: "Damascus, Syria · On-site",
-      description:
-        "Gained solid foundations in web development, including HTML, CSS, JavaScript, and React.js. Contributed to building and improving user interfaces. Learned best practices in responsive and accessible design.",
-      achievements: [
-        "Learned React.js, Redux.js, TypeScript, and Tailwind CSS",
-        "Built and improved user interfaces",
-        "Applied best practices in responsive and accessible design",
-        "Contributed to real projects in a professional environment",
-      ],
-      links: [{ label: "Sanad Youth", url: "https://sanadyouth.org" }],
-    },
-    {
-      title: "Frontend Developer",
-      company: "Freelance | Self-Employed",
-      period: "Sep 2024 - Present · 1 yr 3 mos",
-      location: "Remote",
-      description:
-        "Worked on diverse freelance projects delivering responsive, user-friendly web applications. Applied modern frontend technologies such as React, Redux, Zustand, and React Query. Focused on clean code, performance optimization, and reusability. Developed strong skills in client communication, requirements analysis, and independent project management, while continuously improving teamwork and collaboration abilities.",
-      achievements: [
-        "Delivered multiple responsive web applications",
-        "Used React, Redux, Zustand, and React Query for modern projects",
-        "Focused on clean code, performance, and reusability",
-        "Strengthened client communication and project management skills",
-      ],
-      links: [{ label: "GitHub", url: "https://github.com/YumnaAtaba3" }],
-    },
-  ];
 
+export const experiences: ExperienceItem[] = [
+  {
+    title: "Frontend Developer Trainee",
+    company: "IXCoders",
+    period: "Oct 2025 - Present",
+    location: "On-site",
+    description:
+      "Participating in a professional development environment and contributing to collaborative software projects. Gaining practical experience in modern web development, application architecture, API integration, and building responsive interfaces while following software engineering best practices.",
+    achievements: [
+      "Worked with React, JavaScript, HTML, and CSS",
+      "Contributed to collaborative software development projects",
+      "Integrated frontend applications with REST APIs",
+      "Built responsive and interactive web interfaces",
+      "Strengthened teamwork and Agile development practices",
+    ],
+    links: [
+      {
+        label: "IXCoders",
+        url: "https://ixcoders.com",
+      },
+    ],
+  },
+
+  {
+    title: "Frontend Development Trainee",
+    company: "Sanad Youth",
+    period: "Aug 2025 - Present",
+    location: "Damascus, Syria · On-site",
+    description:
+      "Gained practical experience in modern web application development through real-world projects. Worked with React and TypeScript while developing a strong understanding of application structure, API integration, reusable components, and responsive user interfaces.",
+    achievements: [
+      "Worked with React.js, TypeScript, Redux, and Tailwind CSS",
+      "Integrated frontend applications with REST APIs",
+      "Built reusable and responsive application components",
+      "Applied clean code and software development practices",
+      "Contributed to real-world collaborative projects",
+    ],
+    links: [
+      {
+        label: "Sanad Youth",
+        url: "https://sanadyouth.org",
+      },
+    ],
+  },
+
+  {
+    title: "Backend Developer | Freelance",
+    company: "Self-Employed",
+    period: "Sep 2024 - Present",
+    location: "Remote",
+    description:
+      "Developing backend systems and RESTful APIs using PHP and Laravel, with a focus on database design, authentication, authorization, business logic, and scalable application architecture. Also experienced in frontend development, enabling effective integration between backend services and user interfaces.",
+    achievements: [
+      "Developed RESTful APIs using PHP and Laravel",
+      "Designed relational databases using MySQL and Eloquent ORM",
+      "Implemented authentication, authorization, roles, and permissions",
+      "Developed complex business logic and service-layer architecture",
+      "Built automated task assignment and workload-based distribution logic",
+      "Worked with API validation, middleware, and error handling",
+      "Used Git, GitHub, Postman, and Agile development workflows",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/esraaghneem",
+      },
+    ],
+  },
+];
