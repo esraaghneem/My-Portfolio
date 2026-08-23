@@ -177,7 +177,7 @@ export const projects: Project[] = [
     // No deployed demo
     liveUrl: "#",
 
-    // Hotel project is available on GitHub
+    // Hotel project GitHub
     githubUrl: "https://github.com/esraaghneem",
   },
 
@@ -210,10 +210,10 @@ export const projects: Project[] = [
     ],
 
     description:
-      "A scalable charity management system designed to organize beneficiaries, donations, campaigns, users, and administrative operations through a centralized backend platform. My main contribution focused on backend development, API design, database relationships, authentication, authorization, and business logic.",
+      "A scalable charity management system designed to organize beneficiaries, donations, campaigns, users, and organizational workflows through a centralized backend platform. My main contribution focused on backend development, API design, database architecture, authentication, authorization, and business logic.",
 
     challenge:
-      "The system required secure management of different users and permissions while handling charity data, beneficiaries, donations, campaigns, and administrative workflows in a structured and maintainable way.",
+      "The system required secure management of different users and permissions while handling beneficiaries, donations, campaigns, and administrative workflows in a structured and maintainable way.",
 
     solution:
       "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, role-based permissions, request validation, structured business logic, database relationships, and service-layer architecture.",
@@ -272,7 +272,7 @@ export const projects: Project[] = [
       "An e-commerce system consisting of a customer-facing application and an administrative dashboard. My work focused on developing the backend APIs, database structure, authentication, product and category management, shopping workflows, order processing, and the business logic connecting the application with the admin dashboard.",
 
     challenge:
-      "The system needed to support the main shopping workflow for customers while providing administrators with the ability to manage products, categories, users, and orders through a centralized dashboard.",
+      "The system needed to support the complete shopping workflow for customers while providing administrators with the ability to manage products, categories, users, and orders through a centralized dashboard.",
 
     solution:
       "Developed the backend using Laravel and MySQL, implementing RESTful APIs, authentication, authorization, product and category management, shopping cart workflows, order processing, database relationships, request validation, and service-based business logic for both the customer application and administrative dashboard.",
