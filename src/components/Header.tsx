@@ -1,3 +1,4 @@
+```tsx
 import React, { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
@@ -106,7 +107,7 @@ const Header: React.FC = () => {
             className="text-2xl font-bold gradient-text cursor-pointer hover-scale"
             aria-label="Go to home"
           >
-            Esraa Ghanim
+            Esraa Ghneem
           </button>
 
           {/* Desktop Navigation */}
@@ -171,3 +172,4 @@ const Header: React.FC = () => {
 };
 
 export default Header;
+```
