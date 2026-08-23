@@ -37,10 +37,6 @@ import hotelDashboardManager from "../assets/hotel-dashboard-manager.png";
 import hotelDashboardDepartment from "../assets/hotel-department-dashboard.png";
 import hotelRoomBooking from "../assets/hotel-room-booking.png";
 import hotelServiceRequest from "../assets/hotel-service-request.png";
-
-// IMPORTANT:
-// File name on your computer:
-// hotel-staff-tasks
 import hotelStaffTasks from "../assets/hotel-staff-tasks.png";
 
 // ------------------------------
@@ -98,7 +94,7 @@ export const projects: Project[] = [
       "Developed the backend using Laravel and MySQL with separate authentication for customers and staff, Laravel Sanctum, role-based access control, request validation, middleware, service-layer architecture, database transactions, booking management, service request workflows, staff shift validation, and an automated task assignment algorithm based on employee availability, workload, status, department, and maximum capacity.",
 
     outcome:
-      "Built a complete backend system that connects customers with hotel departments and supports hotel management in controlling staff, monitoring operations, managing requests, and distributing tasks according to employee availability and workload.",
+      "Built a complete hotel management backend that connects customers with hotel departments and supports hotel management in controlling staff, monitoring operations, managing requests, and distributing tasks according to employee availability and workload.",
 
     features: [
       "Customer registration and authentication",
@@ -129,35 +125,55 @@ export const projects: Project[] = [
     // Main image shown on the project card
     image: hotelDashboardManager,
 
-    // Separate screenshot groups
+    // ==============================
+    // Hotel Screenshots
+    // ==============================
+
     imageGroups: [
+
+      // ------------------------------
+      // Customer Application
+      // ------------------------------
+
       {
         title: "Customer Application",
+
         images: [
           hotelRoomBooking,
           hotelServiceRequest,
         ],
       },
 
+      // ------------------------------
+      // Management Dashboard
+      // ------------------------------
+
       {
         title: "Management Dashboard",
+
         images: [
           hotelDashboardManager,
           hotelDashboardDepartment,
         ],
       },
 
+      // ------------------------------
+      // Staff Application
+      // ------------------------------
+
       {
         title: "Staff Application",
+
         images: [
           hotelStaffTasks,
         ],
       },
     ],
 
-    // Keep Live Demo hidden because there is no real deployed demo
+    // No deployed website yet
     liveUrl: "#",
 
+    // GitHub project
     githubUrl: "https://github.com/esraaghneem",
   },
 
