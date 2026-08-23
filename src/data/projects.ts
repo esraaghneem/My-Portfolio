@@ -34,10 +34,10 @@ import complaintsImg from "../assets/compliants.png";
 
 // Hotel Management System
 import hotelDashboardManager from "../assets/hotel-dashboard-manager.png";
-import hotelDashboardDepartment from "../assets/hotel-dashboard-department.png";
+import hotelDashboardDepartment from "../assets/hotel-department-dashboard.png";
 import hotelRoomBooking from "../assets/hotel-room-booking.png";
 import hotelServiceRequest from "../assets/hotel-service-request.png";
-import hotelStaffTasks from "../assets/hotel-staff-tasks.png";
+import hotelStaffTasks from "../assets/hotel-staff-requests.png";
 
 // ==============================
 // Projects
