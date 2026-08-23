@@ -35,9 +35,12 @@ export interface Project {
 
 import hotelDashboardManager from "../assets/hotel-dashboard-manager.png";
 import hotelDashboardDepartment from "../assets/hotel-department-dashboard.png";
+
 import hotelRoomBooking from "../assets/hotel-room-booking.png";
 import hotelServiceRequest from "../assets/hotel-service-request.png";
+
 import hotelStaffTasks from "../assets/hotel-staff-tasks.png";
+import hotelStaffRequests from "../assets/hotel-staff-requests.png";
 
 // ------------------------------
 // Other Projects
@@ -94,7 +97,7 @@ export const projects: Project[] = [
       "Developed the backend using Laravel and MySQL with separate authentication for customers and staff, Laravel Sanctum, role-based access control, request validation, middleware, service-layer architecture, database transactions, booking management, service request workflows, staff shift validation, and an automated task assignment algorithm based on employee availability, workload, status, department, and maximum capacity.",
 
     outcome:
-      "Built a complete hotel management backend that connects customers with hotel departments and supports hotel management in controlling staff, monitoring operations, managing requests, and distributing tasks according to employee availability and workload.",
+      "Built a complete backend system that connects customers with hotel departments and supports hotel management in controlling staff, monitoring operations, managing requests, and distributing tasks according to employee availability and workload.",
 
     features: [
       "Customer registration and authentication",
@@ -122,22 +125,21 @@ export const projects: Project[] = [
       "Service-layer business logic",
     ],
 
-    // Main image shown on the project card
+    // الصورة الرئيسية للكارد
     image: hotelDashboardManager,
 
     // ==============================
-    // Hotel Screenshots
+    // Screenshot Groups
     // ==============================
 
     imageGroups: [
 
       // ------------------------------
-      // Customer Application
+      // Customer Website
       // ------------------------------
 
       {
-        title: "Customer Application",
-
+        title: "Customer Website",
         images: [
           hotelRoomBooking,
           hotelServiceRequest,
@@ -150,7 +152,6 @@ export const projects: Project[] = [
 
       {
         title: "Management Dashboard",
-
         images: [
           hotelDashboardManager,
           hotelDashboardDepartment,
@@ -163,17 +164,17 @@ export const projects: Project[] = [
 
       {
         title: "Staff Application",
-
         images: [
           hotelStaffTasks,
+          hotelStaffRequests,
         ],
       },
     ],
 
-    // No deployed website yet
+    // لا يوجد Live Demo حقيقي
     liveUrl: "#",
 
-    // GitHub project
+    // الفندق موجود على GitHub
     githubUrl: "https://github.com/esraaghneem",
   },
 
@@ -230,7 +231,7 @@ export const projects: Project[] = [
 
     image: charityImage,
 
-    // No GitHub because the project is not uploaded
+    // المشروع غير مرفوع على GitHub
     liveUrl: "#",
   },
 
@@ -286,7 +287,7 @@ export const projects: Project[] = [
 
     image: ecommerceImage,
 
-    // No GitHub because the project is not uploaded
+    // المشروع غير مرفوع على GitHub
     liveUrl: "#",
   },
 ];
