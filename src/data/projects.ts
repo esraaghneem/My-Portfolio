@@ -29,19 +29,18 @@ export interface Project {
 // Project Images
 // ==============================
 
-// ------------------------------
 // Hotel Management System
-// ------------------------------
 
 import hotelDashboardManager from "../assets/hotel-dashboard-manager.png";
 import hotelDashboardDepartment from "../assets/hotel-department-dashboard.png";
+
 import hotelRoomBooking from "../assets/hotel-room-booking.png";
 import hotelServiceRequest from "../assets/hotel-service-request.png";
-import hotelStaffTasks from "../assets/hotel-staff-requests.png";
 
-// ------------------------------
+// NEW TASKS SCREENSHOT
+import hotelStaffTasks from "../assets/hotel-staff-tasks.png";
+
 // Other Projects
-// ------------------------------
 
 import charityImage from "../assets/compliants.png";
 import ecommerceImage from "../assets/Screenshot 2025-11-03 122320.png";
@@ -63,94 +62,66 @@ export const projects: Project[] = [
 
     category: "web",
 
-    duration: "6+ months",
+    duration: "2 months",
 
     role: "Backend Developer",
 
     technologies: [
-      "PHP",
       "Laravel",
+      "PHP",
       "MySQL",
-      "RESTful APIs",
+      "REST API",
       "Laravel Sanctum",
       "Eloquent ORM",
-      "Service Layer Architecture",
-      "Authentication & Authorization",
+      "Service Layer",
       "Role-Based Access Control",
-      "API Validation",
-      "Middleware",
       "Staff Shift Management",
-      "Task Management",
       "Task Assignment Algorithm",
       "Workload-Based Distribution",
     ],
 
     description:
-      "A complete hotel management system that connects customers, hotel management, departments, and staff through one integrated platform. The system manages room bookings, customer service requests, staff operations, shifts, tasks, and automated task distribution.",
+      "An integrated hotel management system designed to connect customers, hotel management, departments, and staff through one unified platform.",
 
     challenge:
-      "The system needed to manage multiple user roles and departments while ensuring that customer requests were securely processed and assigned to suitable employees based on department, availability, workload, maximum capacity, and working shifts.",
+      "The system needed to handle customer bookings, service requests, staff shifts, daily tasks, different user roles, department workflows, and automatic task distribution while ensuring that tasks are assigned only to suitable and available employees.",
 
     solution:
-      "Developed the backend using PHP and Laravel with MySQL and RESTful APIs. Implemented separate authentication for customers and staff using Laravel Sanctum, role-based access control, middleware, request validation, booking management, service request workflows, staff shift validation, workload tracking, and an automated task assignment algorithm.",
+      "Developed the backend using Laravel and MySQL with RESTful APIs, separate authentication for customers and staff, role-based access control, booking management, service request handling, staff shift validation, workload tracking, and an automated task assignment algorithm based on employee availability, current workload, maximum workload, department, and shift status.",
 
     outcome:
-      "Built an integrated backend system that connects customers with hotel departments and automates important operational workflows, helping managers monitor staff, manage tasks, and distribute service requests efficiently.",
+      "Built a complete hotel management backend that connects customers with hotel departments and enables managers to manage staff, monitor operations, handle service requests, and distribute tasks efficiently.",
 
     features: [
-
-      // Customer
       "Customer registration and authentication",
-      "Secure customer login",
-      "Room availability and booking management",
-      "Customer booking management",
-      "Hotel service request creation",
-      "Service request status tracking",
-
-      // Management
-      "General manager dashboard",
-      "Department management",
-      "Staff management",
+      "Room booking management",
+      "Customer service requests",
+      "Staff and department management",
       "Role-based access control",
-      "Supervisor and employee management",
-      "Department workflow management",
-
-      // Staff
-      "Staff authentication",
-      "Employee task management",
+      "Separate authentication for customers and staff",
       "Staff shift management",
-      "Task status management",
-      "Workload tracking",
-      "Employee availability management",
-
-      // Backend Logic
-      "RESTful API architecture",
-      "Authentication and authorization",
-      "API request validation",
-      "Middleware-based access control",
-      "Service Layer architecture",
-      "Database relationship management",
-      "Automated task assignment",
+      "Shift-based task assignment",
+      "Automatic task assignment",
       "Workload-based task distribution",
       "Maximum workload validation",
-      "Staff shift validation",
-      "Availability-based assignment",
-      "Department-based task routing",
-      "Waiting request handling",
-      "Automatic workload recalculation",
-      "Transaction-based task assignment",
-      "Concurrency-safe task distribution",
+      "Employee availability validation",
+      "Department-based task assignment",
+      "Fixed task management",
+      "Service request management",
+      "Custom service request handling",
+      "General manager dashboard",
+      "Department management",
+      "Employee task management",
+      "RESTful API architecture",
+      "Request validation",
+      "Middleware and authorization",
+      "Database relationships",
+      "Service Layer architecture",
     ],
 
-    // Main image shown on the project card
     image: hotelDashboardManager,
 
-    // ------------------------------
-    // Hotel Screenshots
-    // ------------------------------
-
     imageGroups: [
-
       {
         title: "Customer Application",
 
@@ -176,7 +147,6 @@ export const projects: Project[] = [
           hotelStaffTasks,
         ],
       },
-
     ],
 
     liveUrl: "#",
@@ -195,30 +165,29 @@ export const projects: Project[] = [
 
     category: "web",
 
-    duration: "3+ months",
+    duration: "1.5 months",
 
     role: "Backend Developer",
 
     technologies: [
-      "PHP",
       "Laravel",
+      "PHP",
       "MySQL",
-      "RESTful APIs",
+      "REST API",
       "Laravel Sanctum",
       "Eloquent ORM",
-      "Service Layer Architecture",
+      "Service Layer",
       "Role-Based Access Control",
-      "Authentication & Authorization",
     ],
 
     description:
       "A scalable charity management system designed to organize beneficiaries, donations, campaigns, users, and administrative operations through a centralized backend platform.",
 
     challenge:
-      "The system required secure management of different users and permissions while handling charity data, beneficiaries, donations, campaigns, and administrative workflows.",
+      "The system required secure management of different users and permissions while handling charity data, donations, beneficiaries, and administrative workflows.",
 
     solution:
-      "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, role-based permissions, structured business logic, database relationships, and service-based architecture.",
+      "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, role-based permissions, structured business logic, and database relationships to provide a reliable and maintainable system.",
 
     outcome:
       "Delivered a structured backend system that helps organize charity operations, manage data efficiently, and provide secure access based on user roles.",
@@ -232,8 +201,7 @@ export const projects: Project[] = [
       "Administrative dashboard APIs",
       "Secure REST APIs",
       "Database relationship management",
-      "Business logic implementation",
-      "Backend validation",
+      "Backend business logic",
     ],
 
     image: charityImage,
@@ -252,19 +220,18 @@ export const projects: Project[] = [
 
     category: "web",
 
-    duration: "2+ months",
+    duration: "1.5 months",
 
     role: "Backend Developer",
 
     technologies: [
-      "PHP",
       "Laravel",
+      "PHP",
       "MySQL",
-      "RESTful APIs",
+      "REST API",
       "Laravel Sanctum",
       "Eloquent ORM",
-      "Service Layer Architecture",
-      "Authentication & Authorization",
+      "Service Layer",
     ],
 
     description:
@@ -274,7 +241,7 @@ export const projects: Project[] = [
       "The platform needed reliable product and order management, secure authentication, and well-structured APIs to support the main shopping workflows.",
 
     solution:
-      "Developed the backend using Laravel and MySQL, implementing RESTful APIs, authentication, product management, order workflows, database relationships, validation, and organized business logic through service-based architecture.",
+      "Developed the backend using Laravel and MySQL, implementing RESTful APIs, authentication, product management, order workflows, database relationships, and organized business logic through service-based architecture.",
 
     outcome:
       "Delivered a structured e-commerce backend that supports core shopping operations and provides a scalable foundation for the application.",
@@ -288,8 +255,7 @@ export const projects: Project[] = [
       "User management",
       "Secure REST APIs",
       "Database relationship management",
-      "Backend validation",
-      "Business logic implementation",
+      "Backend business logic",
     ],
 
     image: ecommerceImage,
