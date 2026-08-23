@@ -49,6 +49,13 @@ const ProjectDetails: React.FC<{
 }> = ({ project, onClose }) => {
   const [selectedImage, setSelectedImage] = useState(project.image);
 
+  /*
+   * كل الصور الموجودة ضمن imageGroups
+   * رح تنعرض بدون حذف أي صورة.
+   */
+  const allImages =
+    project.imageGroups?.flatMap((group) => group.images) ?? [];
+
   return (
     <div
       className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
@@ -119,73 +126,99 @@ const ProjectDetails: React.FC<{
           </div>
 
           {/* =========================
-              Main Image
+              Main Selected Image
           ========================== */}
 
-          <div className="relative rounded-2xl overflow-hidden mb-8 bg-black/20">
+          <div className="relative rounded-2xl overflow-hidden mb-8 bg-black/20 border border-white/10">
 
             <img
               src={selectedImage}
               alt={project.title}
-              className="w-full max-h-[500px] object-contain"
+              className="w-full max-h-[520px] object-contain"
             />
 
           </div>
 
           {/* =========================
-              Image Groups
+              Screenshot Groups
           ========================== */}
 
           {project.imageGroups &&
             project.imageGroups.length > 0 && (
-              <div className="space-y-10 mb-10">
+              <div className="space-y-12 mb-12">
 
                 {project.imageGroups.map(
                   (group, groupIndex) => (
-                    <div key={groupIndex}>
+                    <div
+                      key={`${group.title}-${groupIndex}`}
+                    >
 
-                      {/* Group Title */}
+                      {/* Group Header */}
 
-                      <div className="flex items-center gap-2 mb-4">
+                      <div className="flex items-center gap-3 mb-5">
 
-                        <Images className="w-5 h-5 text-primary" />
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10">
+                          <Images className="w-5 h-5 text-primary" />
+                        </div>
 
-                        <h3 className="text-lg font-semibold text-foreground">
-                          {group.title}
-                        </h3>
+                        <div>
+                          <h3 className="text-xl font-semibold text-foreground">
+                            {group.title}
+                          </h3>
+
+                          <p className="text-sm text-muted-foreground">
+                            {group.images.length}{" "}
+                            {group.images.length === 1
+                              ? "Screenshot"
+                              : "Screenshots"}
+                          </p>
+                        </div>
 
                       </div>
 
                       {/* Group Images */}
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
                         {group.images.map(
                           (image, index) => (
                             <button
-                              key={index}
+                              key={`${group.title}-${index}`}
                               onClick={() =>
-                                setSelectedImage(
-                                  image
-                                )
+                                setSelectedImage(image)
                               }
-                              className={`relative rounded-xl overflow-hidden border-2 transition-all ${
+                              className={`group/image relative rounded-2xl overflow-hidden border-2 transition-all duration-300 ${
                                 selectedImage === image
-                                  ? "border-primary scale-[1.02]"
+                                  ? "border-primary scale-[1.02] shadow-lg"
                                   : "border-white/10 hover:border-white/30"
                               }`}
                             >
 
-                              <img
-                                src={image}
-                                alt={`${group.title} screenshot ${
-                                  index + 1
-                                }`}
-                                className="w-full h-40 md:h-48 object-cover"
-                              />
+                              <div className="aspect-video bg-black/20">
 
-                              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-1 text-center">
-                                Screenshot {index + 1}
+                                <img
+                                  src={image}
+                                  alt={`${group.title} screenshot ${
+                                    index + 1
+                                  }`}
+                                  className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-105"
+                                />
+
+                              </div>
+
+                              {/* Overlay */}
+
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-70" />
+
+                              {/* Screenshot Label */}
+
+                              <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
+
+                                <span className="text-white text-sm font-medium">
+                                  {group.title}{" "}
+                                  {index + 1}
+                                </span>
+
                               </div>
 
                             </button>
@@ -193,6 +226,7 @@ const ProjectDetails: React.FC<{
                         )}
 
                       </div>
+
                     </div>
                   )
                 )}
@@ -383,11 +417,8 @@ const ProjectDetails: React.FC<{
                     rel="noopener noreferrer"
                     className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
                   >
-
                     <ExternalLink className="w-5 h-5" />
-
                     Live Demo
-
                   </a>
                 )}
 
@@ -400,11 +431,8 @@ const ProjectDetails: React.FC<{
                   rel="noopener noreferrer"
                   className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
                 >
-
                   <Github className="w-5 h-5" />
-
                   GitHub
-
                 </a>
               )}
 
@@ -536,9 +564,7 @@ const ProjectCard: React.FC<{
 
           </div>
 
-          {/* =========================
-              Duration / Role
-          ========================== */}
+          {/* Duration / Role */}
 
           <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-muted-foreground">
 
@@ -564,17 +590,13 @@ const ProjectCard: React.FC<{
 
           </div>
 
-          {/* =========================
-              Description
-          ========================== */}
+          {/* Description */}
 
           <p className="text-muted-foreground leading-relaxed mb-6 flex-1">
             {project.description}
           </p>
 
-          {/* =========================
-              Technologies
-          ========================== */}
+          {/* Technologies */}
 
           <div className="flex flex-wrap gap-2 mb-6">
 
@@ -598,9 +620,7 @@ const ProjectCard: React.FC<{
 
           </div>
 
-          {/* =========================
-              View Details
-          ========================== */}
+          {/* View Details */}
 
           <button
             onClick={() =>
@@ -704,9 +724,7 @@ const Projects: React.FC = () => {
 
         <div className="section-container relative z-10">
 
-          {/* =========================
-              Section Header
-          ========================== */}
+          {/* Section Header */}
 
           <motion.div
             className="text-center mb-16"
@@ -726,15 +744,13 @@ const Projects: React.FC = () => {
               A selection of my backend projects,
               focused on Laravel, PHP, RESTful APIs,
               database design, authentication,
-              business logic, and scalable
-              application architecture.
+              business logic, automated task assignment,
+              and scalable application architecture.
             </p>
 
           </motion.div>
 
-          {/* =========================
-              Projects Grid
-          ========================== */}
+          {/* Projects Grid */}
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
 
@@ -751,9 +767,7 @@ const Projects: React.FC = () => {
 
           </div>
 
-          {/* =========================
-              Stats
-          ========================== */}
+          {/* Stats */}
 
           <ProjectStats stats={stats} />
 
