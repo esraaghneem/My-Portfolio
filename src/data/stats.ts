@@ -1,12 +1,27 @@
- export interface Stat {
+// ==============================
+// Stats
+// ==============================
+
+export interface Stat {
   label: string;
   value: string;
 }
 
-
 export const stats: Stat[] = [
-  { label: "Total Projects", value: "13+" },
-  { label: "Technologies", value: "8+" },
-  { label: "Code Quality", value: "95%" },
-  { label: "On-Time Delivery", value: "100%" },
+  {
+    label: "Total Projects",
+    value: "8",
+  },
+  {
+    label: "Backend Technologies",
+    value: "10+",
+  },
+  {
+    label: "Development Tools",
+    value: "5+",
+  },
+  {
+    label: "Primary Focus",
+    value: "Backend",
+  },
 ];
