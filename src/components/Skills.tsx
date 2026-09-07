@@ -38,6 +38,8 @@ const Skills: React.FC = () => {
       icon: Server,
       title: "Languages & Frameworks",
       skills: ["PHP", "Laravel"],
+      gradient:
+        "bg-gradient-to-r from-purple-500 to-fuchsia-500",
     },
 
     {
@@ -49,6 +51,8 @@ const Skills: React.FC = () => {
         "Business Logic",
         "Service Layer",
       ],
+      gradient:
+        "bg-gradient-to-r from-violet-500 to-indigo-500",
     },
 
     {
@@ -61,6 +65,8 @@ const Skills: React.FC = () => {
         "Relationships",
         "Transactions",
       ],
+      gradient:
+        "bg-gradient-to-r from-fuchsia-500 to-purple-500",
     },
 
     {
@@ -74,6 +80,8 @@ const Skills: React.FC = () => {
         "Middleware",
         "Request Validation",
       ],
+      gradient:
+        "bg-gradient-to-r from-purple-500 to-fuchsia-500",
     },
 
     {
@@ -86,6 +94,8 @@ const Skills: React.FC = () => {
         "Clean Architecture",
         "Separation of Concerns",
       ],
+      gradient:
+        "bg-gradient-to-r from-violet-500 to-indigo-500",
     },
 
     {
@@ -99,13 +109,9 @@ const Skills: React.FC = () => {
         "API Testing",
         "Agile / Scrum",
       ],
+      gradient:
+        "bg-gradient-to-r from-fuchsia-500 to-purple-500",
     },
-  ];
-
-  const gradients = [
-    "bg-gradient-to-r from-purple-500 to-fuchsia-500",
-    "bg-gradient-to-r from-violet-500 to-indigo-500",
-    "bg-gradient-to-r from-fuchsia-500 to-purple-500",
   ];
 
   return (
@@ -169,9 +175,11 @@ const Skills: React.FC = () => {
 
                     <div className="flex items-center gap-4 mb-6">
                       <div
-                        className={`w-12 h-12 ${
-                          gradients[categoryIndex % gradients.length]
-                        } rounded-2xl flex items-center justify-center`}
+                        className={
+                          "w-12 h-12 " +
+                          category.gradient +
+                          " rounded-2xl flex items-center justify-center"
+                        }
                       >
                         <Icon className="w-6 h-6 text-white" />
                       </div>
