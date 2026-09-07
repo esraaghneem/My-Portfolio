@@ -1,3 +1,4 @@
+```tsx
 import React from "react";
 import { motion, Variants, Transition } from "framer-motion";
 import {
@@ -39,12 +40,20 @@ const Skills: React.FC = () => {
   const skillCategories = [
     {
       icon: Server,
-      title: "Backend Development",
+      title: "Languages & Frameworks",
 
       skills: [
         "PHP",
         "Laravel",
-        "RESTful APIs",
+      ],
+    },
+
+    {
+      icon: Code,
+      title: "APIs & Development",
+
+      skills: [
+        "REST APIs",
         "MVC Architecture",
         "Business Logic",
         "Service Layer",
@@ -53,21 +62,20 @@ const Skills: React.FC = () => {
 
     {
       icon: Database,
-      title: "Database & Data",
+      title: "Database",
 
       skills: [
         "MySQL",
         "Eloquent ORM",
         "Database Design",
         "Relationships",
-        "Query Building",
-        "Database Transactions",
+        "Transactions",
       ],
     },
 
     {
       icon: ShieldCheck,
-      title: "Authentication & Security",
+      title: "Security",
 
       skills: [
         "Laravel Sanctum",
@@ -87,7 +95,6 @@ const Skills: React.FC = () => {
         "OOP",
         "SOLID Principles",
         "Design Patterns",
-        "Service Layer",
         "Clean Architecture",
         "Separation of Concerns",
       ],
@@ -103,20 +110,6 @@ const Skills: React.FC = () => {
         "Postman",
         "Jira",
         "API Testing",
-        "Version Control",
-      ],
-    },
-
-    {
-      icon: Code,
-      title: "Development Practices",
-
-      skills: [
-        "Problem Solving",
-        "Debugging",
-        "Error Handling",
-        "Code Organization",
-        "Validation",
         "Agile / Scrum",
       ],
     },
@@ -186,15 +179,14 @@ const Skills: React.FC = () => {
                        mx-auto
                        leading-relaxed"
           >
-            Backend technologies and software engineering practices I use to
-            build reliable, scalable, and maintainable applications.
+            Technologies and practices I use to build reliable, scalable, and
+            maintainable applications.
           </p>
         </motion.div>
 
         {/* ================= Skills Grid ================= */}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={categoryIndex}
@@ -228,7 +220,6 @@ const Skills: React.FC = () => {
                   {/* Category Header */}
 
                   <div className="flex items-center gap-4 mb-6">
-
                     <div
                       className={`
                         w-12
@@ -246,7 +237,6 @@ const Skills: React.FC = () => {
                     <h3 className="text-lg font-bold text-foreground">
                       {category.title}
                     </h3>
-
                   </div>
 
                   {/* Skills */}
@@ -284,166 +274,6 @@ const Skills: React.FC = () => {
               </Tilt>
             </motion.div>
           ))}
-
-        </div>
-
-        {/* ================= Additional Technologies ================= */}
-
-        <motion.div
-          className="mt-16 text-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-        >
-
-          <h3 className="text-2xl font-bold text-foreground mb-8">
-            Additional Technologies
-          </h3>
-
-          <div
-            className="
-              flex
-              flex-wrap
-              justify-center
-              gap-3
-              max-w-4xl
-              mx-auto
-            "
-          >
-
-            {[
-              "PHP",
-              "Laravel",
-              "MySQL",
-              "Eloquent ORM",
-              "Laravel Sanctum",
-              "REST APIs",
-              "Postman",
-              "Git",
-              "GitHub",
-              "Jira",
-              "JSON",
-              "MVC",
-              "OOP",
-              "SOLID",
-              "Design Patterns",
-              "Middleware",
-              "Database Relationships",
-              "Transactions",
-              "API Validation",
-            ].map((tech, index) => (
-              <motion.span
-                key={index}
-                custom={index}
-                variants={fadeUp}
-                className="
-                  px-4
-                  py-2
-                  glass-card
-                  rounded-full
-                  text-sm
-                  font-medium
-                  text-foreground
-                  hover-scale
-                  transition-all
-                  duration-300
-                "
-              >
-                {tech}
-              </motion.span>
-            ))}
-
-          </div>
-
-        </motion.div>
-
-        {/* ================= Skill Summary ================= */}
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-
-          {[
-            {
-              label: "Backend Stack",
-              value: "PHP / Laravel",
-              icon: Server,
-            },
-
-            {
-              label: "Database",
-              value: "MySQL",
-              icon: Database,
-            },
-
-            {
-              label: "Architecture",
-              value: "Clean & Scalable",
-              icon: Layers,
-            },
-
-            {
-              label: "Core Focus",
-              value: "Backend",
-              icon: Code,
-            },
-          ].map((stat, index) => (
-
-            <motion.div
-              key={index}
-              custom={index}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="
-                text-center
-                glass-card
-                p-6
-                rounded-2xl
-                hover-scale
-                bg-gradient-to-br
-                from-white/5
-                to-white/10
-                border
-                border-white/10
-              "
-            >
-
-              <div
-                className={`
-                  w-12
-                  h-12
-                  ${getGradientClass(index)}
-                  rounded-2xl
-                  flex
-                  items-center
-                  justify-center
-                  mx-auto
-                  mb-4
-                `}
-              >
-                <stat.icon className="w-6 h-6 text-white" />
-              </div>
-
-              <div
-                className="
-                  text-2xl
-                  font-bold
-                  gradient-text
-                  mb-2
-                "
-              >
-                {stat.value}
-              </div>
-
-              <div className="text-sm text-muted-foreground">
-                {stat.label}
-              </div>
-
-            </motion.div>
-
-          ))}
-
         </div>
 
       </div>
@@ -452,3 +282,4 @@ const Skills: React.FC = () => {
 };
 
 export default Skills;
+```
