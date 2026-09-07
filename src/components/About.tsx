@@ -1,4 +1,3 @@
-```tsx
 import React from "react";
 import { motion, Transition, Variants } from "framer-motion";
 import Tilt from "react-parallax-tilt";
@@ -18,11 +17,18 @@ const defaultTransition: Transition = {
 };
 
 const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: {
+    opacity: 0,
+    y: 60,
+  },
+
   visible: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { ...defaultTransition, delay: i * 0.2 },
+    transition: {
+      ...defaultTransition,
+      delay: i * 0.2,
+    },
   }),
 };
 
@@ -33,29 +39,30 @@ interface InfoCardProps {
   children: React.ReactNode;
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({ title, children }) => (
-  <Tilt
-    tiltMaxAngleX={6}
-    tiltMaxAngleY={6}
-    scale={1.03}
-    transitionSpeed={250}
-  >
-    <motion.div
-      className="glass-card p-6 rounded-2xl backdrop-blur-xl border border-white/10
-                 bg-gradient-to-br from-white/10 to-white/5 shadow-xl"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+const InfoCard: React.FC<InfoCardProps> = ({ title, children }) => {
+  return (
+    <Tilt
+      tiltMaxAngleX={6}
+      tiltMaxAngleY={6}
+      scale={1.03}
+      transitionSpeed={250}
     >
-      <h4 className="text-lg font-semibold text-foreground mb-3">
-        {title}
-      </h4>
+      <motion.div
+        className="glass-card p-6 rounded-2xl backdrop-blur-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 shadow-xl"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h4 className="text-lg font-semibold text-foreground mb-3">
+          {title}
+        </h4>
 
-      {children}
-    </motion.div>
-  </Tilt>
-);
+        {children}
+      </motion.div>
+    </Tilt>
+  );
+};
 
 interface HighlightCardProps {
   icon: React.ElementType;
@@ -67,40 +74,41 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   icon: Icon,
   title,
   description,
-}) => (
-  <Tilt
-    tiltMaxAngleX={8}
-    tiltMaxAngleY={8}
-    scale={1.05}
-    transitionSpeed={300}
-  >
-    <motion.div
-      className="glass-card p-6 rounded-2xl hover:shadow-2xl bg-gradient-to-br
-                 from-blue-500/20 via-indigo-500/10 to-purple-500/10 border border-white/10"
-      whileHover={{ scale: 1.03 }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+}) => {
+  return (
+    <Tilt
+      tiltMaxAngleX={8}
+      tiltMaxAngleY={8}
+      scale={1.05}
+      transitionSpeed={300}
     >
-      <div className="flex items-start gap-4">
-        <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg">
-          <Icon className="w-6 h-6 text-white" />
-        </div>
+      <motion.div
+        className="glass-card p-6 rounded-2xl hover:shadow-2xl bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-purple-500/10 border border-white/10"
+        whileHover={{ scale: 1.03 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg">
+            <Icon className="w-6 h-6 text-white" />
+          </div>
 
-        <div>
-          <h4 className="text-lg font-semibold text-foreground mb-2">
-            {title}
-          </h4>
+          <div>
+            <h4 className="text-lg font-semibold text-foreground mb-2">
+              {title}
+            </h4>
 
-          <p className="text-sm text-muted-foreground">
-            {description}
-          </p>
+            <p className="text-sm text-muted-foreground">
+              {description}
+            </p>
+          </div>
         </div>
-      </div>
-    </motion.div>
-  </Tilt>
-);
+      </motion.div>
+    </Tilt>
+  );
+};
 
 interface StatCardProps {
   icon: React.ElementType;
@@ -112,36 +120,37 @@ const StatCard: React.FC<StatCardProps> = ({
   icon: Icon,
   label,
   value,
-}) => (
-  <Tilt
-    tiltMaxAngleX={6}
-    tiltMaxAngleY={6}
-    scale={1.05}
-    transitionSpeed={300}
-  >
-    <motion.div
-      className="glass-card p-6 rounded-2xl text-center bg-gradient-to-br
-                 from-blue-500/20 to-purple-500/20 border border-white/10 hover:shadow-xl"
-      whileHover={{ scale: 1.05 }}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+}) => {
+  return (
+    <Tilt
+      tiltMaxAngleX={6}
+      tiltMaxAngleY={6}
+      scale={1.05}
+      transitionSpeed={300}
     >
-      <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-md">
-        <Icon className="w-6 h-6 text-white" />
-      </div>
+      <motion.div
+        className="glass-card p-6 rounded-2xl text-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 hover:shadow-xl"
+        whileHover={{ scale: 1.05 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-md">
+          <Icon className="w-6 h-6 text-white" />
+        </div>
 
-      <div className="text-2xl font-bold gradient-text mb-2">
-        {value}
-      </div>
+        <div className="text-2xl font-bold gradient-text mb-2">
+          {value}
+        </div>
 
-      <div className="text-sm text-muted-foreground">
-        {label}
-      </div>
-    </motion.div>
-  </Tilt>
-);
+        <div className="text-sm text-muted-foreground">
+          {label}
+        </div>
+      </motion.div>
+    </Tilt>
+  );
+};
 
 // =================== Main Component ===================
 
@@ -222,8 +231,9 @@ const About: React.FC = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I’m a Backend Developer focused on building reliable, well-structured
-            applications and turning complex requirements into practical solutions.
+            I’m a Backend Developer focused on building reliable,
+            well-structured applications and turning complex requirements
+            into practical solutions.
           </p>
         </motion.div>
 
@@ -244,9 +254,9 @@ const About: React.FC = () => {
 
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                I enjoy working on real-world systems where backend architecture,
-                business logic, and data come together to create efficient and
-                maintainable software.
+                I enjoy working on real-world systems where backend
+                architecture, business logic, and data come together to create
+                efficient and maintainable software.
               </p>
 
               <p>
@@ -278,7 +288,6 @@ const About: React.FC = () => {
 
             <InfoCard title="Languages">
               <div className="grid grid-cols-3 gap-4">
-
                 <div>
                   <p className="font-medium text-foreground">
                     Arabic
@@ -308,10 +317,8 @@ const About: React.FC = () => {
                     Very Strong
                   </p>
                 </div>
-
               </div>
             </InfoCard>
-
           </motion.div>
 
           {/* Right Column */}
@@ -360,4 +367,3 @@ const About: React.FC = () => {
 };
 
 export default About;
-```
