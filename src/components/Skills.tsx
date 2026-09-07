@@ -109,18 +109,12 @@ const Skills: React.FC = () => {
       id="skills"
       className="section-spacing relative overflow-hidden"
     >
-      {/* Background Effects */}
-
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
-
         <div className="absolute w-96 h-96 bg-fuchsia-500/20 blur-[120px] rounded-full bottom-0 right-0 animate-pulse delay-1000" />
       </div>
 
       <div className="section-container relative z-10">
-
-        {/* Header */}
-
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -137,8 +131,6 @@ const Skills: React.FC = () => {
             maintainable applications.
           </p>
         </motion.div>
-
-        {/* Skills Grid */}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, categoryIndex) => {
@@ -160,9 +152,6 @@ const Skills: React.FC = () => {
                   transitionSpeed={250}
                 >
                   <div className="glass-card p-8 rounded-3xl hover-lift bg-gradient-to-br from-white/5 to-white/10 border border-white/10 shadow-xl h-full">
-
-                    {/* Card Header */}
-
                     <div className="flex items-center gap-4 mb-6">
                       <div
                         className={
@@ -178,8 +167,6 @@ const Skills: React.FC = () => {
                         {category.title}
                       </h3>
                     </div>
-
-                    {/* Skills */}
 
                     <ul className="grid grid-cols-2 gap-3 text-sm text-muted-foreground">
                       {category.skills.map((skill) => (
