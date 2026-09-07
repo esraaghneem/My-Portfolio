@@ -1,3 +1,4 @@
+```tsx
 import React from "react";
 import { motion, Transition, Variants } from "framer-motion";
 import Tilt from "react-parallax-tilt";
@@ -164,7 +165,7 @@ const About: React.FC = () => {
     {
       icon: GraduationCap,
       label: "Graduation",
-      value: "2027",
+      value: "2026",
     },
   ];
 
@@ -173,19 +174,19 @@ const About: React.FC = () => {
       icon: Server,
       title: "Backend Development",
       description:
-        "Building reliable backend systems and RESTful APIs using PHP and Laravel.",
+        "Building reliable applications and APIs with a focus on clean architecture and maintainable code.",
     },
     {
       icon: Database,
       title: "Database Design",
       description:
-        "Designing structured relational databases and implementing efficient data access with MySQL and Eloquent.",
+        "Designing structured relational databases and organizing data for efficient and reliable applications.",
     },
     {
       icon: ShieldCheck,
-      title: "Authentication & Authorization",
+      title: "Secure Systems",
       description:
-        "Implementing secure authentication, role-based access control, permissions, and business rules.",
+        "Implementing authentication, authorization, permissions, and business rules to support secure applications.",
     },
   ];
 
@@ -221,10 +222,8 @@ const About: React.FC = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I am a Backend Developer specializing in PHP and Laravel,
-            with a strong focus on building RESTful APIs, database-driven
-            applications, authentication systems, and reliable backend
-            architectures.
+            I’m a Backend Developer focused on building reliable, well-structured
+            applications and turning complex requirements into practical solutions.
           </p>
         </motion.div>
 
@@ -245,21 +244,15 @@ const About: React.FC = () => {
 
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
-                My experience focuses on developing backend applications
-                using PHP and Laravel, with an emphasis on clean architecture,
-                business logic, RESTful APIs, and database design.
+                I enjoy working on real-world systems where backend architecture,
+                business logic, and data come together to create efficient and
+                maintainable software.
               </p>
 
               <p>
-                I enjoy solving complex backend problems and building systems
-                that handle authentication, roles and permissions, service
-                requests, task management, and automated business processes.
-              </p>
-
-              <p>
-                I am continuously developing my software engineering skills
-                through real-world projects and applying principles such as
-                OOP, SOLID, design patterns, and structured database design.
+                I’m particularly interested in solving challenging problems,
+                designing clear APIs, and continuously improving the way
+                applications work behind the scenes.
               </p>
             </div>
 
@@ -272,7 +265,7 @@ const About: React.FC = () => {
                 </p>
 
                 <p className="text-sm text-muted-foreground">
-                  Damascus University • 2022 - 2027
+                  Damascus University • 2022 - 2026
                 </p>
 
                 <p className="text-sm text-muted-foreground">
@@ -367,3 +360,4 @@ const About: React.FC = () => {
 };
 
 export default About;
+```
