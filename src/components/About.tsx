@@ -10,8 +10,6 @@ import {
   GraduationCap,
 } from "lucide-react";
 
-// =================== Animations ===================
-
 const defaultTransition: Transition = {
   duration: 0.7,
   ease: "easeOut",
@@ -22,7 +20,6 @@ const fadeUp: Variants = {
     opacity: 0,
     y: 60,
   },
-
   visible: (i: number = 0) => ({
     opacity: 1,
     y: 0,
@@ -32,8 +29,6 @@ const fadeUp: Variants = {
     },
   }),
 };
-
-// =================== Reusable Components ===================
 
 interface InfoCardProps {
   title: string;
@@ -58,7 +53,6 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, children }) => {
         <h4 className="text-lg font-semibold text-foreground mb-3">
           {title}
         </h4>
-
         {children}
       </motion.div>
     </Tilt>
@@ -153,8 +147,6 @@ const StatCard: React.FC<StatCardProps> = ({
   );
 };
 
-// =================== Main Component ===================
-
 const About: React.FC = () => {
   const stats = [
     {
@@ -205,8 +197,6 @@ const About: React.FC = () => {
       id="about"
       className="relative section-spacing bg-surface overflow-hidden"
     >
-      {/* Floating Gradient Orbs */}
-
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
 
@@ -214,9 +204,6 @@ const About: React.FC = () => {
       </div>
 
       <div className="section-container relative z-10">
-
-        {/* Header */}
-
         <motion.div
           className="text-center mb-16"
           initial="hidden"
@@ -239,9 +226,6 @@ const About: React.FC = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-
-          {/* Left Column */}
-
           <motion.div
             className="space-y-6"
             initial="hidden"
@@ -256,8 +240,8 @@ const About: React.FC = () => {
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
                 I enjoy working on real-world systems where backend
-                architecture, business logic, and data come together to create
-                efficient and maintainable software.
+                architecture, business logic, and data come together to
+                create efficient and maintainable software.
               </p>
 
               <p>
@@ -266,8 +250,6 @@ const About: React.FC = () => {
                 applications work behind the scenes.
               </p>
             </div>
-
-            {/* Education */}
 
             <InfoCard title="Education">
               <div className="space-y-2">
@@ -285,35 +267,20 @@ const About: React.FC = () => {
               </div>
             </InfoCard>
 
-            {/* Languages */}
-
             <InfoCard title="Languages">
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <p className="font-medium text-foreground">
-                    Arabic
-                  </p>
-
-                  <p className="text-sm text-muted-foreground">
-                    Native
-                  </p>
+                  <p className="font-medium text-foreground">Arabic</p>
+                  <p className="text-sm text-muted-foreground">Native</p>
                 </div>
 
                 <div>
-                  <p className="font-medium text-foreground">
-                    English
-                  </p>
-
-                  <p className="text-sm text-muted-foreground">
-                    Advanced
-                  </p>
+                  <p className="font-medium text-foreground">English</p>
+                  <p className="text-sm text-muted-foreground">Advanced</p>
                 </div>
 
                 <div>
-                  <p className="font-medium text-foreground">
-                    Turkish
-                  </p>
-
+                  <p className="font-medium text-foreground">Turkish</p>
                   <p className="text-sm text-muted-foreground">
                     Very Strong
                   </p>
@@ -322,8 +289,6 @@ const About: React.FC = () => {
             </InfoCard>
           </motion.div>
 
-          {/* Right Column */}
-
           <motion.div
             className="space-y-8"
             initial="hidden"
@@ -331,35 +296,21 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             variants={fadeUp}
           >
-
-            {/* Highlights */}
-
             <div className="space-y-6">
               {highlights.map((item, i) => (
-                <motion.div
-                  key={i}
-                  custom={i}
-                  variants={fadeUp}
-                >
+                <motion.div key={i} custom={i} variants={fadeUp}>
                   <HighlightCard {...item} />
                 </motion.div>
               ))}
             </div>
 
-            {/* Stats */}
-
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, i) => (
-                <motion.div
-                  key={i}
-                  custom={i}
-                  variants={fadeUp}
-                >
+                <motion.div key={i} custom={i} variants={fadeUp}>
                   <StatCard {...stat} />
                 </motion.div>
               ))}
             </div>
-
           </motion.div>
         </div>
       </div>
