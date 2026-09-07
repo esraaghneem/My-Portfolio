@@ -18,43 +18,46 @@ const defaultTransition: Transition = {
 const fadeUp: Variants = {
   hidden: {
     opacity: 0,
-    y: 60,
+    y: 40,
   },
-  visible: (i: number = 0) => ({
+  visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      ...defaultTransition,
-      delay: i * 0.2,
-    },
-  }),
+    transition: defaultTransition,
+  },
 };
 
 interface InfoCardProps {
+  icon: React.ElementType;
   title: string;
   children: React.ReactNode;
 }
 
-const InfoCard: React.FC<InfoCardProps> = ({ title, children }) => {
+const InfoCard: React.FC<InfoCardProps> = ({
+  icon: Icon,
+  title,
+  children,
+}) => {
   return (
     <Tilt
-      tiltMaxAngleX={6}
-      tiltMaxAngleY={6}
-      scale={1.03}
+      tiltMaxAngleX={5}
+      tiltMaxAngleY={5}
+      scale={1.02}
       transitionSpeed={250}
     >
-      <motion.div
-        className="glass-card p-6 rounded-2xl backdrop-blur-xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 shadow-xl"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h4 className="text-lg font-semibold text-foreground mb-3">
-          {title}
-        </h4>
-        {children}
-      </motion.div>
+      <div className="glass-card p-6 rounded-2xl h-full">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center">
+            <Icon className="w-5 h-5 text-primary" />
+          </div>
+
+          <h3 className="text-lg font-bold text-foreground">{title}</h3>
+        </div>
+
+        <div className="text-muted-foreground leading-relaxed">
+          {children}
+        </div>
+      </div>
     </Tilt>
   );
 };
@@ -71,136 +74,43 @@ const HighlightCard: React.FC<HighlightCardProps> = ({
   description,
 }) => {
   return (
-    <Tilt
-      tiltMaxAngleX={8}
-      tiltMaxAngleY={8}
-      scale={1.05}
-      transitionSpeed={300}
+    <motion.div
+      variants={fadeUp}
+      className="glass-card p-6 rounded-2xl hover-lift"
     >
-      <motion.div
-        className="glass-card p-6 rounded-2xl hover:shadow-2xl bg-gradient-to-br from-blue-500/20 via-indigo-500/10 to-purple-500/10 border border-white/10"
-        whileHover={{ scale: 1.03 }}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-lg">
-            <Icon className="w-6 h-6 text-white" />
-          </div>
+      <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+        <Icon className="w-6 h-6 text-primary" />
+      </div>
 
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-2">
-              {title}
-            </h4>
+      <h3 className="text-lg font-bold text-foreground mb-2">{title}</h3>
 
-            <p className="text-sm text-muted-foreground">
-              {description}
-            </p>
-          </div>
-        </div>
-      </motion.div>
-    </Tilt>
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        {description}
+      </p>
+    </motion.div>
   );
 };
 
 interface StatCardProps {
-  icon: React.ElementType;
-  label: string;
   value: string;
+  label: string;
 }
 
-const StatCard: React.FC<StatCardProps> = ({
-  icon: Icon,
-  label,
-  value,
-}) => {
+const StatCard: React.FC<StatCardProps> = ({ value, label }) => {
   return (
-    <Tilt
-      tiltMaxAngleX={6}
-      tiltMaxAngleY={6}
-      scale={1.05}
-      transitionSpeed={300}
-    >
-      <motion.div
-        className="glass-card p-6 rounded-2xl text-center bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/10 hover:shadow-xl"
-        whileHover={{ scale: 1.05 }}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="w-14 h-14 mx-auto mb-4 flex items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-purple-500 shadow-md">
-          <Icon className="w-6 h-6 text-white" />
-        </div>
-
-        <div className="text-2xl font-bold gradient-text mb-2">
-          {value}
-        </div>
-
-        <div className="text-sm text-muted-foreground">
-          {label}
-        </div>
-      </motion.div>
-    </Tilt>
+    <div className="text-center">
+      <div className="text-3xl font-bold gradient-text mb-1">{value}</div>
+      <div className="text-sm text-muted-foreground">{label}</div>
+    </div>
   );
 };
 
 const About: React.FC = () => {
-  const stats = [
-    {
-      icon: Code,
-      label: "Featured Projects",
-      value: "3",
-    },
-    {
-      icon: Server,
-      label: "Backend Focus",
-      value: "100%",
-    },
-    {
-      icon: Database,
-      label: "Primary Database",
-      value: "MySQL",
-    },
-    {
-      icon: GraduationCap,
-      label: "Graduation",
-      value: "2027",
-    },
-  ];
-
-  const highlights = [
-    {
-      icon: Server,
-      title: "Backend Development",
-      description:
-        "Building reliable applications and APIs with a focus on clean architecture and maintainable code.",
-    },
-    {
-      icon: Database,
-      title: "Database Design",
-      description:
-        "Designing structured relational databases and organizing data for efficient and reliable applications.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Secure Systems",
-      description:
-        "Implementing authentication, authorization, permissions, and business rules to support secure applications.",
-    },
-  ];
-
   return (
-    <section
-      id="about"
-      className="relative section-spacing bg-surface overflow-hidden"
-    >
+    <section id="about" className="section-spacing relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
-
-        <div className="absolute w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full bottom-0 right-0 animate-pulse delay-2000" />
+        <div className="absolute w-96 h-96 bg-purple-500/10 blur-[120px] rounded-full top-0 left-0" />
+        <div className="absolute w-96 h-96 bg-fuchsia-500/10 blur-[120px] rounded-full bottom-0 right-0" />
       </div>
 
       <div className="section-container relative z-10">
@@ -211,108 +121,159 @@ const About: React.FC = () => {
           viewport={{ once: true }}
           variants={fadeUp}
         >
-          <h2 className="text-display gradient-text mb-6">
-            About{" "}
-            <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              Me
-            </span>
-          </h2>
+          <h2 className="text-display gradient-text mb-6">About Me</h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I’m a Backend Developer focused on building reliable,
-            well-structured applications and turning complex requirements
-            into practical solutions.
+            I build reliable web applications with a strong focus on clean
+            architecture, database design, security, and maintainable code.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <motion.div
-            className="space-y-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <h3 className="text-heading text-foreground">
-              Building Reliable Backend Systems
-            </h3>
+        <motion.div
+          className="grid lg:grid-cols-2 gap-8 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <InfoCard icon={Code} title="Development">
+            I develop web applications using PHP and Laravel, focusing on
+            structured code, reusable components, RESTful APIs, and clear
+            business logic.
+          </InfoCard>
 
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                I enjoy working on real-world systems where backend
-                architecture, business logic, and data come together to
-                create efficient and maintainable software.
+          <InfoCard icon={Server} title="Backend & APIs">
+            I design server-side systems and REST APIs with authentication,
+            authorization, validation, middleware, and service-based business
+            logic.
+          </InfoCard>
+
+          <InfoCard icon={Database} title="Database Design">
+            I work with MySQL and Eloquent ORM to design relational databases,
+            relationships, transactions, and efficient data access.
+          </InfoCard>
+
+          <InfoCard icon={ShieldCheck} title="Security">
+            I implement authentication, authorization, roles and permissions,
+            request validation, and secure API access using Laravel tools.
+          </InfoCard>
+        </motion.div>
+
+        <motion.div
+          className="grid md:grid-cols-3 gap-6 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <HighlightCard
+            icon={Code}
+            title="Backend Development"
+            description="Building structured applications and APIs with PHP and Laravel."
+          />
+
+          <HighlightCard
+            icon={Database}
+            title="Database Design"
+            description="Designing relational databases and managing complex data relationships."
+          />
+
+          <HighlightCard
+            icon={ShieldCheck}
+            title="Secure Systems"
+            description="Applying authentication, authorization, validation, and secure API practices."
+          />
+        </motion.div>
+
+        <motion.div
+          className="glass-card p-8 rounded-3xl mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <GraduationCap className="w-6 h-6 text-primary" />
+            </div>
+
+            <div>
+              <h3 className="text-xl font-bold text-foreground">Education</h3>
+              <p className="text-muted-foreground">
+                Bachelor of Information Technology Engineering
               </p>
+            </div>
+          </div>
 
-              <p>
-                I’m particularly interested in solving challenging problems,
-                designing clear APIs, and continuously improving the way
-                applications work behind the scenes.
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">
+                University
+              </p>
+              <p className="font-semibold text-foreground">
+                Damascus University
               </p>
             </div>
 
-            <InfoCard title="Education">
-              <div className="space-y-2">
-                <p className="font-medium text-foreground">
-                  Bachelor of Information Technology Engineering
-                </p>
-
-                <p className="text-sm text-muted-foreground">
-                  Damascus University • 2022 - 2027
-                </p>
-
-                <p className="text-sm text-muted-foreground">
-                  GPA: 83%
-                </p>
-              </div>
-            </InfoCard>
-
-            <InfoCard title="Languages">
-              <div className="grid grid-cols-3 gap-4">
-                <div>
-                  <p className="font-medium text-foreground">Arabic</p>
-                  <p className="text-sm text-muted-foreground">Native</p>
-                </div>
-
-                <div>
-                  <p className="font-medium text-foreground">English</p>
-                  <p className="text-sm text-muted-foreground">Advanced</p>
-                </div>
-
-                <div>
-                  <p className="font-medium text-foreground">Turkish</p>
-                  <p className="text-sm text-muted-foreground">
-                    Very Strong
-                  </p>
-                </div>
-              </div>
-            </InfoCard>
-          </motion.div>
-
-          <motion.div
-            className="space-y-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-          >
-            <div className="space-y-6">
-              {highlights.map((item, i) => (
-                <motion.div key={i} custom={i} variants={fadeUp}>
-                  <HighlightCard {...item} />
-                </motion.div>
-              ))}
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Graduation
+              </p>
+              <p className="font-semibold text-foreground">2027</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat, i) => (
-                <motion.div key={i} custom={i} variants={fadeUp}>
-                  <StatCard {...stat} />
-                </motion.div>
-              ))}
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">
+                Study Period
+              </p>
+              <p className="font-semibold text-foreground">2022 - 2027</p>
             </div>
-          </motion.div>
-        </div>
+
+            <div>
+              <p className="text-sm text-muted-foreground mb-1">GPA</p>
+              <p className="font-semibold text-foreground">83%</p>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="glass-card p-8 rounded-3xl"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <StatCard value="3" label="Featured Projects" />
+            <StatCard value="100%" label="Backend Focus" />
+            <StatCard value="MySQL" label="Primary Database" />
+            <StatCard value="2027" label="Graduation" />
+          </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-12 text-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <h3 className="text-xl font-bold text-foreground mb-6">
+            Languages
+          </h3>
+
+          <div className="flex flex-wrap justify-center gap-4">
+            <span className="px-5 py-2 rounded-full bg-primary/10 text-primary">
+              Arabic — Native
+            </span>
+
+            <span className="px-5 py-2 rounded-full bg-primary/10 text-primary">
+              English — Advanced
+            </span>
+
+            <span className="px-5 py-2 rounded-full bg-primary/10 text-primary">
+              Turkish — Very Strong
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
