@@ -16,7 +16,7 @@ const scrollToSection = (sectionId: string) => {
   }
 };
 
-// Esraa's core backend technologies
+// Core technologies
 const coreTechs = ["PHP", "Laravel", "MySQL", "REST APIs"];
 
 const Hero: React.FC = () => {
