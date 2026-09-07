@@ -11,8 +11,6 @@ import {
 } from "lucide-react";
 import Tilt from "react-parallax-tilt";
 
-// =================== Animations ===================
-
 const fadeUp: Variants = {
   hidden: {
     opacity: 0,
@@ -30,16 +28,13 @@ const fadeUp: Variants = {
   }),
 };
 
-// =================== Main Component ===================
-
 const Skills: React.FC = () => {
   const skillCategories = [
     {
       icon: Server,
       title: "Languages & Frameworks",
       skills: ["PHP", "Laravel"],
-      gradient:
-        "bg-gradient-to-r from-purple-500 to-fuchsia-500",
+      gradient: "bg-gradient-to-r from-purple-500 to-fuchsia-500",
     },
 
     {
@@ -51,8 +46,7 @@ const Skills: React.FC = () => {
         "Business Logic",
         "Service Layer",
       ],
-      gradient:
-        "bg-gradient-to-r from-violet-500 to-indigo-500",
+      gradient: "bg-gradient-to-r from-violet-500 to-indigo-500",
     },
 
     {
@@ -65,8 +59,7 @@ const Skills: React.FC = () => {
         "Relationships",
         "Transactions",
       ],
-      gradient:
-        "bg-gradient-to-r from-fuchsia-500 to-purple-500",
+      gradient: "bg-gradient-to-r from-fuchsia-500 to-purple-500",
     },
 
     {
@@ -80,8 +73,7 @@ const Skills: React.FC = () => {
         "Middleware",
         "Request Validation",
       ],
-      gradient:
-        "bg-gradient-to-r from-purple-500 to-fuchsia-500",
+      gradient: "bg-gradient-to-r from-purple-500 to-fuchsia-500",
     },
 
     {
@@ -94,8 +86,7 @@ const Skills: React.FC = () => {
         "Clean Architecture",
         "Separation of Concerns",
       ],
-      gradient:
-        "bg-gradient-to-r from-violet-500 to-indigo-500",
+      gradient: "bg-gradient-to-r from-violet-500 to-indigo-500",
     },
 
     {
@@ -109,8 +100,7 @@ const Skills: React.FC = () => {
         "API Testing",
         "Agile / Scrum",
       ],
-      gradient:
-        "bg-gradient-to-r from-fuchsia-500 to-purple-500",
+      gradient: "bg-gradient-to-r from-fuchsia-500 to-purple-500",
     },
   ];
 
@@ -198,7 +188,6 @@ const Skills: React.FC = () => {
                           className="flex items-center gap-2"
                         >
                           <span className="w-1.5 h-1.5 bg-purple-400 rounded-full flex-shrink-0" />
-
                           {skill}
                         </li>
                       ))}
