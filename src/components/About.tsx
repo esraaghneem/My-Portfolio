@@ -1,3 +1,4 @@
+```tsx
 import React from "react";
 import { motion, Transition, Variants } from "framer-motion";
 import Tilt from "react-parallax-tilt";
@@ -174,7 +175,7 @@ const About: React.FC = () => {
     {
       icon: GraduationCap,
       label: "Graduation",
-      value: "2026",
+      value: "2027",
     },
   ];
 
@@ -275,7 +276,7 @@ const About: React.FC = () => {
                 </p>
 
                 <p className="text-sm text-muted-foreground">
-                  Damascus University • 2022 - 2026
+                  Damascus University • 2022 - 2027
                 </p>
 
                 <p className="text-sm text-muted-foreground">
@@ -367,3 +368,4 @@ const About: React.FC = () => {
 };
 
 export default About;
+```
