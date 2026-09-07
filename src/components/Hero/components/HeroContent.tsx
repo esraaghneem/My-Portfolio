@@ -49,9 +49,9 @@ const HeroContent: React.FC<HeroContentProps> = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 0.6 }}
     >
-      Backend Developer specializing in PHP and Laravel, focused on building
-      reliable RESTful APIs, database-driven applications, and scalable
-      backend systems with clean and maintainable architecture.
+      Specializing in PHP and Laravel, with a focus on building reliable
+      RESTful APIs, database-driven applications, and scalable systems using
+      clean and maintainable architecture.
     </motion.p>
 
     {/* Creative Element: Dynamic Code Snippet */}
