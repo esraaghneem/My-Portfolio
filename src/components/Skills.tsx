@@ -57,6 +57,8 @@ const Skills: React.FC = () => {
       icon: Layers,
       title: "Software Engineering",
       skills: [
+        "Requirement Analysis",
+        "Problem Solving",
         "OOP",
         "SOLID Principles",
         "Design Patterns",
