@@ -236,7 +236,7 @@ export const projects: Project[] = [
     ],
 
     // No image for now
-    // No GitHub because the project is not uploaded
+    githubUrl: "https://github.com/esraaghneem/charity-management",
     liveUrl: "#",
   },
 
@@ -298,7 +298,7 @@ export const projects: Project[] = [
     ],
 
     // No image for now
-    // No GitHub because the project is not uploaded
+    githubUrl: "https://github.com/esraaghneem/ecommerce-backend",
     liveUrl: "#",
   },
 
