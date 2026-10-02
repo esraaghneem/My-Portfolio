@@ -121,9 +121,10 @@ const Footer: React.FC = () => {
             </div>
 
             <p className="text-muted-foreground leading-relaxed mb-6 max-w-md">
-              Backend Developer focused on building reliable, scalable, and
-              maintainable applications using modern backend technologies,
-              clean architecture, and solid software engineering practices.
+              Full-Stack Developer focused on building reliable, scalable, and
+              maintainable web applications using Laravel, React, modern
+              development practices, clean architecture, and solid software
+              engineering principles.
             </p>
 
             <div className="flex gap-4">
