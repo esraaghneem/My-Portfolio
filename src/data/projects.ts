@@ -65,7 +65,7 @@ export const projects: Project[] = [
 
     duration: "2 months",
 
-    role: "Backend Developer",
+    role: "Full-Stack Developer",
 
     technologies: [
       "Laravel",
@@ -85,23 +85,26 @@ export const projects: Project[] = [
     ],
 
     description:
-      "An integrated hotel management system developed to connect customers, hotel management, departments, and staff through one unified platform. My main responsibility was designing and developing the backend architecture, RESTful APIs, authentication, business logic, database relationships, and automated task distribution.",
+      "An integrated hotel management system connecting customers, hotel management, departments, and staff through a unified platform. I worked across the application to develop the backend architecture, RESTful APIs, authentication, database relationships, business logic, customer-facing workflows, management dashboards, staff workflows, and automated task distribution.",
 
     challenge:
-      "The system needed to manage different user roles, room bookings, customer service requests, staff shifts, daily tasks, department workflows, and workload distribution while ensuring that tasks were assigned only to suitable and available employees.",
+      "The system needed to connect multiple parts of the hotel operation, including customer bookings and service requests, management dashboards, departments, staff shifts, daily tasks, and workload distribution, while maintaining secure access and consistent business rules across the application.",
 
     solution:
-      "Developed the backend using Laravel and MySQL with separate authentication for customers and staff, Laravel Sanctum, role-based access control, request validation, middleware, service-layer architecture, database transactions, booking management, service request workflows, staff shift validation, and an automated task assignment algorithm based on employee availability, workload, status, department, and maximum capacity.",
+      "Developed and integrated the application using Laravel and MySQL, with separate authentication for customers and staff, Laravel Sanctum, role-based access control, request validation, middleware, service-layer architecture, database transactions, room booking management, customer service request workflows, management dashboards, staff task workflows, shift validation, and an automated task assignment algorithm based on employee availability, workload, status, department, and maximum capacity.",
 
     outcome:
-      "Built a complete backend system that connects customers with hotel departments and supports hotel management in controlling staff, monitoring operations, managing requests, and distributing tasks according to employee availability and workload.",
+      "Built an integrated hotel management platform connecting the customer website, management dashboards, and staff application with a structured Laravel backend, enabling hotel management to monitor operations, manage departments and staff, handle customer requests, and distribute tasks according to employee availability and workload.",
 
     features: [
       "Customer registration and authentication",
       "Separate customer and staff authentication",
+      "Customer-facing hotel website",
       "Room booking management",
       "Customer service request management",
-      "Staff and department management",
+      "Management dashboard",
+      "Department management",
+      "Staff management",
       "Role-based access control",
       "Staff shift management",
       "Shift-based task eligibility",
@@ -112,6 +115,7 @@ export const projects: Project[] = [
       "Department-based task assignment",
       "Fixed task management",
       "Dynamic customer request tasks",
+      "Staff task management",
       "Task status management",
       "Staff workload tracking",
       "General manager management",
