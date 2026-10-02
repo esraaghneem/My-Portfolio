@@ -14,7 +14,7 @@ const Skills: React.FC = () => {
     {
       icon: Server,
       title: "Languages & Frameworks",
-      skills: ["PHP", "Laravel"],
+      skills: ["PHP", "Laravel", "JavaScript", "React"],
       gradient: "bg-gradient-to-r from-purple-500 to-fuchsia-500",
     },
     {
@@ -25,6 +25,7 @@ const Skills: React.FC = () => {
         "MVC Architecture",
         "Business Logic",
         "Service Layer",
+        "Reusable Components",
       ],
       gradient: "bg-gradient-to-r from-violet-500 to-indigo-500",
     },
@@ -105,8 +106,8 @@ const Skills: React.FC = () => {
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Technologies and practices I use to build reliable, scalable, and
-            maintainable applications.
+            Technologies and practices I use to build modern, reliable,
+            scalable, and maintainable full-stack applications.
           </p>
         </motion.div>
 
