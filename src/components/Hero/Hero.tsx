@@ -17,7 +17,7 @@ const scrollToSection = (sectionId: string) => {
 };
 
 // Core technologies
-const coreTechs = ["PHP", "Laravel", "MySQL", "REST APIs"];
+const coreTechs = ["PHP", "Laravel", "React", "MySQL", "REST APIs"];
 
 const Hero: React.FC = () => {
   return (
