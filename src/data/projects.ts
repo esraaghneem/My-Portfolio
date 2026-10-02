@@ -50,32 +50,22 @@ import hotelStaffRequests from "../assets/hotel-staff-requests.png";
 // Sweet House
 // ------------------------------
 
-import sweetHouse203 from "../assets/لقطة الشاشة (203).png";
-import sweetHouse204 from "../assets/لقطة الشاشة (204).png";
-import sweetHouse205 from "../assets/لقطة الشاشة (205).png";
-import sweetHouse207 from "../assets/لقطة الشاشة (207).png";
+import sweetHouseS1 from "../assets/s1.png";
+import sweetHouseS2 from "../assets/s2.png";
+import sweetHouseS3 from "../assets/s3.png";
+import sweetHouseS4 from "../assets/s4.png";
 
 // ==============================
 // Projects
 // ==============================
 
 export const projects: Project[] = [
-
-  // =========================================================
-  // 1. INTEGRATED HOTEL MANAGEMENT SYSTEM
-  // =========================================================
-
   {
     id: 1,
-
     title: "Integrated Hotel Management System",
-
     category: "web",
-
     duration: "2 months",
-
     role: "Full-Stack Developer",
-
     technologies: [
       "Laravel",
       "PHP",
@@ -92,19 +82,14 @@ export const projects: Project[] = [
       "Workload-Based Distribution",
       "Staff Shift Validation",
     ],
-
     description:
       "An integrated hotel management system connecting customers, hotel management, departments, and staff through a unified platform. I worked across the application to develop the backend architecture, RESTful APIs, authentication, database relationships, business logic, customer-facing workflows, management dashboards, staff workflows, and automated task distribution.",
-
     challenge:
       "The system needed to connect multiple parts of the hotel operation, including customer bookings and service requests, management dashboards, departments, staff shifts, daily tasks, and workload distribution, while maintaining secure access and consistent business rules across the application.",
-
     solution:
       "Developed and integrated the application using Laravel and MySQL, with separate authentication for customers and staff, Laravel Sanctum, role-based access control, request validation, middleware, service-layer architecture, database transactions, room booking management, customer service request workflows, management dashboards, staff task workflows, shift validation, and an automated task assignment algorithm based on employee availability, workload, status, department, and maximum capacity.",
-
     outcome:
       "Built an integrated hotel management platform connecting the customer website, management dashboards, and staff application with a structured Laravel backend, enabling hotel management to monitor operations, manage departments and staff, handle customer requests, and distribute tasks according to employee availability and workload.",
-
     features: [
       "Customer registration and authentication",
       "Separate customer and staff authentication",
@@ -134,58 +119,31 @@ export const projects: Project[] = [
       "Database transactions",
       "Service-layer business logic",
     ],
-
     image: hotelDashboardManager,
-
     imageGroups: [
       {
         title: "Customer Website",
-
-        images: [
-          hotelRoomBooking,
-          hotelServiceRequest,
-        ],
+        images: [hotelRoomBooking, hotelServiceRequest],
       },
-
       {
         title: "Management Dashboard",
-
-        images: [
-          hotelDashboardManager,
-          hotelDashboardDepartment,
-        ],
+        images: [hotelDashboardManager, hotelDashboardDepartment],
       },
-
       {
         title: "Staff Application",
-
-        images: [
-          hotelStaffTasks,
-          hotelStaffRequests,
-        ],
+        images: [hotelStaffTasks, hotelStaffRequests],
       },
     ],
-
     liveUrl: "#",
-
     githubUrl: "https://github.com/esraaghneem",
   },
 
-  // =========================================================
-  // 2. CHARITY MANAGEMENT SYSTEM
-  // =========================================================
-
   {
     id: 2,
-
     title: "Charity Management System",
-
     category: "web",
-
     duration: "1.5 months",
-
     role: "Backend Developer",
-
     technologies: [
       "Laravel",
       "PHP",
@@ -198,19 +156,14 @@ export const projects: Project[] = [
       "Database Design",
       "Request Validation",
     ],
-
     description:
       "A scalable charity management system designed to organize beneficiaries, donations, campaigns, users, and organizational workflows through a centralized backend platform. My main contribution focused on backend development, API design, database architecture, authentication, authorization, and business logic.",
-
     challenge:
       "The system required secure management of different users and permissions while handling beneficiaries, donations, campaigns, and administrative workflows in a structured and maintainable way.",
-
     solution:
       "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, role-based permissions, request validation, structured business logic, database relationships, and service-layer architecture.",
-
     outcome:
       "Delivered a structured and scalable backend system that organizes charity operations, manages data efficiently, and provides secure access based on user roles and permissions.",
-
     features: [
       "User authentication",
       "Role and permission management",
@@ -224,26 +177,16 @@ export const projects: Project[] = [
       "Service-layer architecture",
       "Authorization and access control",
     ],
-
     githubUrl: "https://github.com/esraaghneem/charity-management",
     liveUrl: "#",
   },
 
-  // =========================================================
-  // 3. E-COMMERCE APPLICATION & ADMIN DASHBOARD
-  // =========================================================
-
   {
     id: 3,
-
     title: "E-Commerce Application & Admin Dashboard",
-
     category: "web",
-
     duration: "1.5 months",
-
     role: "Backend Developer",
-
     technologies: [
       "Laravel",
       "PHP",
@@ -256,19 +199,14 @@ export const projects: Project[] = [
       "Request Validation",
       "Authorization",
     ],
-
     description:
       "An e-commerce system consisting of a customer-facing application and an administrative dashboard. My work focused on developing the backend APIs, database structure, authentication, product and category management, shopping workflows, order processing, and the business logic connecting the application with the admin dashboard.",
-
     challenge:
       "The system needed to support the complete shopping workflow for customers while providing administrators with the ability to manage products, categories, users, and orders through a centralized dashboard.",
-
     solution:
       "Developed the backend using Laravel and MySQL, implementing RESTful APIs, authentication, authorization, product and category management, shopping cart workflows, order processing, database relationships, request validation, and service-based business logic for both the customer application and administrative dashboard.",
-
     outcome:
       "Built a structured e-commerce backend that connects the customer application with the admin dashboard and supports the core shopping, product, and order management workflows.",
-
     features: [
       "Customer authentication",
       "Product management",
@@ -285,26 +223,16 @@ export const projects: Project[] = [
       "Database relationship management",
       "Service-layer architecture",
     ],
-
     githubUrl: "https://github.com/esraaghneem/ecommerce-backend",
     liveUrl: "#",
   },
 
-  // =========================================================
-  // 4. CINEMA BOOKING SYSTEM
-  // =========================================================
-
   {
     id: 4,
-
     title: "Cinema Booking System",
-
     category: "web",
-
     duration: "1.5 months",
-
     role: "Backend Developer",
-
     technologies: [
       "Laravel",
       "PHP",
@@ -317,19 +245,14 @@ export const projects: Project[] = [
       "Request Validation",
       "Authorization",
     ],
-
     description:
       "A cinema booking system developed to manage movies, showtimes, customers, and booking workflows through a structured backend. My work focused on developing the backend APIs, database relationships, authentication, validation, and the business logic required to manage the booking process.",
-
     challenge:
       "The system needed to organize movies and showtimes while allowing customers to interact with the booking system securely and ensuring that booking operations followed the required business rules.",
-
     solution:
       "Developed the backend using Laravel and MySQL with RESTful APIs, authentication, authorization, database relationships, request validation, and service-layer business logic to manage cinema data and booking workflows.",
-
     outcome:
       "Built a structured cinema booking backend that provides the APIs and business logic required to support movie browsing, showtime management, customer interactions, and booking operations.",
-
     features: [
       "Customer authentication",
       "Movie management",
@@ -342,25 +265,15 @@ export const projects: Project[] = [
       "Database relationship management",
       "Service-layer business logic",
     ],
-
     liveUrl: "#",
   },
 
-  // =========================================================
-  // 5. SWEET HOUSE
-  // =========================================================
-
   {
     id: 5,
-
     title: "Sweet House",
-
     category: "web",
-
     duration: "Ongoing",
-
     role: "Full-Stack Developer",
-
     technologies: [
       "Laravel",
       "PHP",
@@ -378,19 +291,14 @@ export const projects: Project[] = [
       "Order Management",
       "Vite",
     ],
-
     description:
       "A modern dessert e-commerce application built with Laravel and React, providing a complete web experience for browsing products, exploring categories, managing shopping cart items, and placing orders through a structured frontend and backend architecture.",
-
     challenge:
       "The application required a reliable connection between the React frontend and Laravel backend while managing products, categories, users, authentication, cart operations, orders, stock, and business logic through a structured and maintainable architecture.",
-
     solution:
       "Developed the application using React for the frontend and Laravel for the backend, connected through RESTful APIs. Implemented authentication, authorization, product and category management, database relationships, shopping cart functionality, order processing, stock validation, request validation, and structured frontend components.",
-
     outcome:
       "Built a complete full-stack dessert e-commerce application with a responsive React interface and a structured Laravel backend, providing organized product browsing, authentication, cart management, and order workflows.",
-
     features: [
       "User registration and authentication",
       "Login and logout functionality",
@@ -411,24 +319,14 @@ export const projects: Project[] = [
       "Responsive React interface",
       "Reusable frontend components",
     ],
-
-    image: sweetHouse207,
-
+    image: sweetHouseS4,
     imageGroups: [
       {
         title: "Sweet House Interface",
-
-        images: [
-          sweetHouse203,
-          sweetHouse204,
-          sweetHouse205,
-          sweetHouse207,
-        ],
+        images: [sweetHouseS1, sweetHouseS2, sweetHouseS3, sweetHouseS4],
       },
     ],
-
     liveUrl: "#",
-
     githubUrl: "https://github.com/esraaghneem/sweet-house-backend",
   },
 ];
