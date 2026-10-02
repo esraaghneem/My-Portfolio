@@ -45,4 +45,27 @@ export const experiences: ExperienceItem[] = [
       },
     ],
   },
+
+  {
+    title: "Frontend Developer | React",
+    company: "Personal Projects",
+    period: "2025 - Present",
+    location: "Remote",
+
+    description:
+      "Building modern and responsive frontend applications using React and JavaScript, with a focus on reusable components, REST API integration, dynamic interfaces, clean code, and maintainable frontend architecture.",
+
+    achievements: [
+      "Developed responsive web interfaces using React and JavaScript",
+      "Built reusable and modular React components",
+      "Integrated React applications with RESTful APIs",
+      "Managed application state and user interactions",
+      "Implemented dynamic data rendering from backend APIs",
+      "Created reusable UI sections and interactive components",
+      "Worked with forms, authentication flows, and frontend validation",
+      "Connected frontend applications with Laravel backend services",
+      "Applied component-based architecture and separation of concerns",
+      "Used Git and GitHub for version control and project development",
+    ],
+  },
 ];
