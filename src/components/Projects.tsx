@@ -91,23 +91,19 @@ const ProjectDetails: React.FC<{
         </button>
 
         <div className="p-6 md:p-8">
-
           {/* =========================
               Project Header
           ========================== */}
 
           <div className="mb-8 pr-12">
-
             <div className="flex flex-wrap items-center gap-3 mb-4">
-
               <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium">
-                Backend Project
+                Full-Stack Project
               </span>
 
               <span className="px-3 py-1 glass-card rounded-full text-sm text-muted-foreground">
                 {project.role}
               </span>
-
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold gradient-text mb-4">
@@ -117,7 +113,6 @@ const ProjectDetails: React.FC<{
             <p className="text-muted-foreground leading-relaxed max-w-4xl">
               {project.description}
             </p>
-
           </div>
 
           {/* =========================
@@ -127,13 +122,11 @@ const ProjectDetails: React.FC<{
 
           {selectedImage && (
             <div className="relative rounded-2xl overflow-hidden mb-8 bg-black/20 border border-white/10">
-
               <img
                 src={selectedImage}
                 alt={project.title}
                 className="w-full max-h-[520px] object-contain"
               />
-
             </div>
           )}
 
@@ -144,23 +137,19 @@ const ProjectDetails: React.FC<{
           {project.imageGroups &&
             project.imageGroups.length > 0 && (
               <div className="space-y-12 mb-12">
-
                 {project.imageGroups.map(
                   (group, groupIndex) => (
                     <div
                       key={`${group.title}-${groupIndex}`}
                     >
-
                       {/* Group Header */}
 
                       <div className="flex items-center gap-3 mb-5">
-
                         <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center border border-white/10">
                           <Images className="w-5 h-5 text-primary" />
                         </div>
 
                         <div>
-
                           <h3 className="text-xl font-semibold text-foreground">
                             {group.title}
                           </h3>
@@ -171,15 +160,12 @@ const ProjectDetails: React.FC<{
                               ? "Screenshot"
                               : "Screenshots"}
                           </p>
-
                         </div>
-
                       </div>
 
                       {/* Group Images */}
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
                         {group.images.map(
                           (image, index) => (
                             <button
@@ -193,9 +179,7 @@ const ProjectDetails: React.FC<{
                                   : "border-white/10 hover:border-white/30"
                               }`}
                             >
-
                               <div className="aspect-video bg-black/20">
-
                                 <img
                                   src={image}
                                   alt={`${group.title} screenshot ${
@@ -203,7 +187,6 @@ const ProjectDetails: React.FC<{
                                   }`}
                                   className="w-full h-full object-cover transition-transform duration-500 group-hover/image:scale-105"
                                 />
-
                               </div>
 
                               {/* Overlay */}
@@ -213,24 +196,18 @@ const ProjectDetails: React.FC<{
                               {/* Screenshot Label */}
 
                               <div className="absolute bottom-0 left-0 right-0 px-4 py-3">
-
                                 <span className="text-white text-sm font-medium">
                                   {group.title}{" "}
                                   {index + 1}
                                 </span>
-
                               </div>
-
                             </button>
                           )
                         )}
-
                       </div>
-
                     </div>
                   )
                 )}
-
               </div>
             )}
 
@@ -239,63 +216,51 @@ const ProjectDetails: React.FC<{
           ========================== */}
 
           <div className="grid md:grid-cols-2 gap-8">
-
             {/* =====================
                 Left Column
             ====================== */}
 
             <div className="space-y-6">
-
               {/* Duration */}
 
               <div>
-
                 <div className="flex items-center gap-2 mb-2">
-
                   <Calendar className="w-5 h-5 text-primary" />
 
                   <h3 className="font-semibold text-foreground">
                     Duration
                   </h3>
-
                 </div>
 
                 <p className="text-muted-foreground">
                   {project.duration}
                 </p>
-
               </div>
 
               {/* Role */}
 
               <div>
-
                 <div className="flex items-center gap-2 mb-2">
-
                   <User className="w-5 h-5 text-primary" />
 
                   <h3 className="font-semibold text-foreground">
                     Role
                   </h3>
-
                 </div>
 
                 <p className="text-muted-foreground">
                   {project.role}
                 </p>
-
               </div>
 
               {/* Technologies */}
 
               <div>
-
                 <h3 className="font-semibold text-foreground mb-3">
-                  Technologies & Backend
+                  Technologies & Stack
                 </h3>
 
                 <div className="flex flex-wrap gap-2">
-
                   {project.technologies.map(
                     (tech) => (
                       <span
@@ -306,11 +271,8 @@ const ProjectDetails: React.FC<{
                       </span>
                     )
                   )}
-
                 </div>
-
               </div>
-
             </div>
 
             {/* =====================
@@ -318,34 +280,27 @@ const ProjectDetails: React.FC<{
             ====================== */}
 
             <div>
-
               <h3 className="font-semibold text-foreground mb-4">
                 Key Features
               </h3>
 
               <ul className="space-y-3">
-
                 {project.features.map(
                   (feature, index) => (
                     <li
                       key={index}
                       className="flex items-start gap-2 text-sm text-muted-foreground"
                     >
-
                       <ChevronRight className="w-4 h-4 text-primary mt-0.5 shrink-0" />
 
                       <span>
                         {feature}
                       </span>
-
                     </li>
                   )
                 )}
-
               </ul>
-
             </div>
-
           </div>
 
           {/* =========================
@@ -353,11 +308,9 @@ const ProjectDetails: React.FC<{
           ========================== */}
 
           <div className="grid md:grid-cols-3 gap-6 mt-10">
-
             {/* Challenge */}
 
             <div className="glass-card p-5 rounded-2xl border border-white/10">
-
               <h3 className="font-semibold text-foreground mb-3">
                 Challenge
               </h3>
@@ -365,13 +318,11 @@ const ProjectDetails: React.FC<{
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.challenge}
               </p>
-
             </div>
 
             {/* Solution */}
 
             <div className="glass-card p-5 rounded-2xl border border-white/10">
-
               <h3 className="font-semibold text-foreground mb-3">
                 Solution
               </h3>
@@ -379,13 +330,11 @@ const ProjectDetails: React.FC<{
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.solution}
               </p>
-
             </div>
 
             {/* Outcome */}
 
             <div className="glass-card p-5 rounded-2xl border border-white/10">
-
               <h3 className="font-semibold text-foreground mb-3">
                 Outcome
               </h3>
@@ -393,9 +342,7 @@ const ProjectDetails: React.FC<{
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.outcome}
               </p>
-
             </div>
-
           </div>
 
           {/* =========================
@@ -406,7 +353,6 @@ const ProjectDetails: React.FC<{
             project.liveUrl !== "#") ||
           project.githubUrl ? (
             <div className="flex flex-wrap gap-4 mt-10 pt-6 border-t border-white/10">
-
               {/* Live Demo */}
 
               {project.liveUrl &&
@@ -417,11 +363,9 @@ const ProjectDetails: React.FC<{
                     rel="noopener noreferrer"
                     className="px-5 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:scale-[1.02] transition-all"
                   >
-
                     <ExternalLink className="w-5 h-5" />
 
                     Live Demo
-
                   </a>
                 )}
 
@@ -434,17 +378,13 @@ const ProjectDetails: React.FC<{
                   rel="noopener noreferrer"
                   className="px-5 py-3 rounded-xl glass-card text-foreground flex items-center gap-2 hover-lift"
                 >
-
                   <Github className="w-5 h-5" />
 
                   GitHub
-
                 </a>
               )}
-
             </div>
           ) : null}
-
         </div>
       </motion.div>
     </div>
@@ -464,7 +404,6 @@ const ProjectCard: React.FC<{
   index,
   onOpen,
 }) => {
-
   const screenshotCount =
     project.imageGroups?.reduce(
       (total, group) =>
@@ -483,7 +422,6 @@ const ProjectCard: React.FC<{
       scale={1.03}
       transitionSpeed={250}
     >
-
       <motion.div
         className="glass-card rounded-3xl overflow-hidden group bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent border border-white/10 shadow-xl flex flex-col h-full"
         custom={index}
@@ -494,7 +432,6 @@ const ProjectCard: React.FC<{
           once: true,
         }}
       >
-
         {/* =========================
             Project Image
             Only for projects that have images
@@ -502,7 +439,6 @@ const ProjectCard: React.FC<{
 
         {hasImage && project.image && (
           <div className="relative overflow-hidden">
-
             <img
               src={project.image}
               alt={project.title}
@@ -511,32 +447,25 @@ const ProjectCard: React.FC<{
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
-            {/* Backend Badge */}
+            {/* Full-Stack Badge */}
 
             <div className="absolute top-4 left-4">
-
               <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium shadow-md">
-                Backend Project
+                Full-Stack Project
               </span>
-
             </div>
 
             {/* Screenshot Count */}
 
             {screenshotCount > 0 && (
               <div className="absolute bottom-4 right-4">
-
                 <span className="px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs flex items-center gap-2">
-
                   <Images className="w-4 h-4" />
 
                   {screenshotCount} Screenshots
-
                 </span>
-
               </div>
             )}
-
           </div>
         )}
 
@@ -545,18 +474,15 @@ const ProjectCard: React.FC<{
         ========================== */}
 
         <div className="p-8 flex flex-col flex-1">
-
           {/* Title + GitHub */}
 
           <div className="flex items-start justify-between mb-4 gap-4">
-
             <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
               {project.title}
             </h3>
 
             {project.githubUrl && (
               <div className="flex gap-2 shrink-0">
-
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -567,40 +493,30 @@ const ProjectCard: React.FC<{
                   aria-label={`${project.title} GitHub repository`}
                   className="w-10 h-10 circle-secondary flex items-center justify-center hover-glow transition-all duration-300"
                 >
-
                   <Github className="w-5 h-5 text-white" />
-
                 </a>
-
               </div>
             )}
-
           </div>
 
           {/* Duration / Role */}
 
           <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-muted-foreground">
-
             <div className="flex items-center gap-1">
-
               <Calendar className="w-4 h-4" />
 
               <span>
                 {project.duration}
               </span>
-
             </div>
 
             <div className="flex items-center gap-1">
-
               <User className="w-4 h-4" />
 
               <span>
                 {project.role}
               </span>
-
             </div>
-
           </div>
 
           {/* Description */}
@@ -612,7 +528,6 @@ const ProjectCard: React.FC<{
           {/* Technologies */}
 
           <div className="flex flex-wrap gap-2 mb-6">
-
             {project.technologies
               .slice(0, 6)
               .map((tech) => (
@@ -630,7 +545,6 @@ const ProjectCard: React.FC<{
                 {project.technologies.length - 6}
               </span>
             )}
-
           </div>
 
           {/* View Details */}
@@ -641,17 +555,12 @@ const ProjectCard: React.FC<{
             }
             className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-white/10 text-foreground font-medium flex items-center justify-center gap-2 hover:from-blue-500 hover:to-purple-500 hover:text-white transition-all duration-300"
           >
-
             View Project Details
 
             <ChevronRight className="w-5 h-5" />
-
           </button>
-
         </div>
-
       </motion.div>
-
     </Tilt>
   );
 };
@@ -665,7 +574,6 @@ const ProjectStats: React.FC<{
 }> = ({
   stats = [],
 }) => (
-
   <motion.div
     className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
     initial="hidden"
@@ -675,17 +583,14 @@ const ProjectStats: React.FC<{
     }}
     variants={fadeUp}
   >
-
     {stats.map(
       (stat, index) => (
-
         <motion.div
           key={index}
           className="text-center glass-card p-6 rounded-2xl hover-scale"
           custom={index}
           variants={fadeUp}
         >
-
           <div className="text-3xl font-bold gradient-text mb-2">
             {stat.value}
           </div>
@@ -693,11 +598,9 @@ const ProjectStats: React.FC<{
           <div className="text-sm text-muted-foreground">
             {stat.label}
           </div>
-
         </motion.div>
       )
     )}
-
   </motion.div>
 );
 
@@ -706,7 +609,6 @@ const ProjectStats: React.FC<{
 // ==============================
 
 const Projects: React.FC = () => {
-
   const [
     selectedProject,
     setSelectedProject,
@@ -714,7 +616,6 @@ const Projects: React.FC = () => {
 
   return (
     <>
-
       {/* =========================
           Projects Section
       ========================== */}
@@ -723,19 +624,15 @@ const Projects: React.FC = () => {
         id="projects"
         className="section-spacing bg-surface relative overflow-hidden"
       >
-
         {/* Background Glow */}
 
         <div className="absolute inset-0 pointer-events-none">
-
           <div className="absolute w-96 h-96 bg-blue-500/20 blur-[120px] rounded-full top-10 left-0 animate-pulse" />
 
           <div className="absolute w-96 h-96 bg-purple-500/20 blur-[120px] rounded-full bottom-0 right-0 animate-pulse delay-1000" />
-
         </div>
 
         <div className="section-container relative z-10">
-
           {/* =========================
               Section Header
           ========================== */}
@@ -749,19 +646,17 @@ const Projects: React.FC = () => {
             }}
             variants={fadeUp}
           >
-
             <h2 className="text-display gradient-text mb-6">
               My Projects
             </h2>
 
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              A selection of my backend projects,
-              focused on Laravel, PHP, RESTful APIs,
+              A selection of my full-stack projects,
+              focused on Laravel, React, PHP, RESTful APIs,
               database design, authentication,
-              business logic, automated task assignment,
+              business logic, reusable components,
               and scalable application architecture.
             </p>
-
           </motion.div>
 
           {/* =========================
@@ -769,7 +664,6 @@ const Projects: React.FC = () => {
           ========================== */}
 
           <div className="grid lg:grid-cols-2 gap-8 items-stretch">
-
             {projects.map(
               (project, index) => (
                 <ProjectCard
@@ -780,7 +674,6 @@ const Projects: React.FC = () => {
                 />
               )
             )}
-
           </div>
 
           {/* =========================
@@ -788,7 +681,6 @@ const Projects: React.FC = () => {
           ========================== */}
 
           <ProjectStats stats={stats} />
-
         </div>
       </section>
 
@@ -804,7 +696,6 @@ const Projects: React.FC = () => {
           }
         />
       )}
-
     </>
   );
 };
