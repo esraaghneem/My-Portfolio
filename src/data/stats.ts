@@ -22,6 +22,6 @@ export const stats: Stat[] = [
   },
   {
     label: "Primary Focus",
-    value: "Backend",
+    value: "Full-Stack",
   },
 ];
