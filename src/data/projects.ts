@@ -272,7 +272,7 @@ export const projects: Project[] = [
     id: 5,
     title: "Sweet House",
     category: "web",
-    duration: "Ongoing",
+    duration: "1 week",
     role: "Full-Stack Developer",
     technologies: [
       "Laravel",
@@ -319,7 +319,7 @@ export const projects: Project[] = [
       "Responsive React interface",
       "Reusable frontend components",
     ],
-    image: sweetHouseS4,
+    image: sweetHouseS1,
     imageGroups: [
       {
         title: "Sweet House Interface",
