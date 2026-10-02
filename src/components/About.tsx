@@ -22,8 +22,9 @@ const About: React.FC = () => {
           <h2 className="text-display gradient-text mb-6">About Me</h2>
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I build reliable web applications with a focus on clean
-            architecture, database design, security, and maintainable code.
+            I build modern web applications using Laravel and React, with a
+            focus on clean architecture, database design, security, and
+            maintainable code.
           </p>
         </motion.div>
 
@@ -40,13 +41,13 @@ const About: React.FC = () => {
                 <Code className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-xl font-bold text-foreground">
-                Development
+                Full-Stack Development
               </h3>
             </div>
 
             <p className="text-muted-foreground leading-relaxed">
-              I develop web applications using PHP and Laravel, with a focus
-              on structured code, RESTful APIs, reusable components, and clear
+              I build web applications using Laravel and React, with a focus
+              on structured code, reusable components, RESTful APIs, and clear
               business logic.
             </p>
           </motion.div>
@@ -186,18 +187,20 @@ const About: React.FC = () => {
             </div>
 
             <div>
-              <div className="text-3xl font-bold gradient-text mb-1">PHP</div>
+              <div className="text-3xl font-bold gradient-text mb-1">
+                Laravel
+              </div>
               <div className="text-sm text-muted-foreground">
-                Main Language
+                Main Backend Framework
               </div>
             </div>
 
             <div>
               <div className="text-3xl font-bold gradient-text mb-1">
-                MySQL
+                React
               </div>
               <div className="text-sm text-muted-foreground">
-                Primary Database
+                Frontend Library
               </div>
             </div>
 
