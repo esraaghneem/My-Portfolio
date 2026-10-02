@@ -22,7 +22,8 @@ const Experience: React.FC = () => {
 
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             My professional experience, technical growth, and development
-            as a Backend Developer.
+            as a Full-Stack Developer using Laravel, React, REST APIs,
+            databases, and modern software engineering practices.
           </p>
         </div>
 
