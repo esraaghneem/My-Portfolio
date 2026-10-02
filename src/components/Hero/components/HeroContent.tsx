@@ -40,7 +40,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.4 }}
     >
-      Backend Developer
+      Full-Stack Developer
     </motion.h2>
 
     <motion.p
@@ -49,9 +49,9 @@ const HeroContent: React.FC<HeroContentProps> = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 1, delay: 0.6 }}
     >
-      Specializing in PHP and Laravel, with a focus on building reliable
-      RESTful APIs, database-driven applications, and scalable systems using
-      clean and maintainable architecture.
+      Building modern web applications using PHP, Laravel, and React, with a
+      focus on reliable RESTful APIs, database-driven systems, and clean,
+      maintainable architecture.
     </motion.p>
 
     {/* Creative Element: Dynamic Code Snippet */}
