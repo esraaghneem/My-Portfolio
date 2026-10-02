@@ -46,6 +46,15 @@ import hotelServiceRequest from "../assets/hotel-service-request.png";
 import hotelStaffTasks from "../assets/hotel-staff-tasks.png";
 import hotelStaffRequests from "../assets/hotel-staff-requests.png";
 
+// ------------------------------
+// Sweet House
+// ------------------------------
+
+import sweetHouse203 from "../assets/لقطة الشاشة (203).png";
+import sweetHouse204 from "../assets/لقطة الشاشة (204).png";
+import sweetHouse205 from "../assets/لقطة الشاشة (205).png";
+import sweetHouse207 from "../assets/لقطة الشاشة (207).png";
+
 // ==============================
 // Projects
 // ==============================
@@ -126,22 +135,9 @@ export const projects: Project[] = [
       "Service-layer business logic",
     ],
 
-    // ==============================
-    // Main Card Image
-    // ==============================
-
     image: hotelDashboardManager,
 
-    // ==============================
-    // Screenshot Groups
-    // ==============================
-
     imageGroups: [
-
-      // ------------------------------
-      // Customer Website
-      // ------------------------------
-
       {
         title: "Customer Website",
 
@@ -151,10 +147,6 @@ export const projects: Project[] = [
         ],
       },
 
-      // ------------------------------
-      // Management Dashboard
-      // ------------------------------
-
       {
         title: "Management Dashboard",
 
@@ -163,10 +155,6 @@ export const projects: Project[] = [
           hotelDashboardDepartment,
         ],
       },
-
-      // ------------------------------
-      // Staff Application
-      // ------------------------------
 
       {
         title: "Staff Application",
@@ -178,10 +166,8 @@ export const projects: Project[] = [
       },
     ],
 
-    // No deployed demo
     liveUrl: "#",
 
-    // Hotel project GitHub
     githubUrl: "https://github.com/esraaghneem",
   },
 
@@ -239,7 +225,6 @@ export const projects: Project[] = [
       "Authorization and access control",
     ],
 
-    // No image for now
     githubUrl: "https://github.com/esraaghneem/charity-management",
     liveUrl: "#",
   },
@@ -301,7 +286,6 @@ export const projects: Project[] = [
       "Service-layer architecture",
     ],
 
-    // No image for now
     githubUrl: "https://github.com/esraaghneem/ecommerce-backend",
     liveUrl: "#",
   },
@@ -359,8 +343,92 @@ export const projects: Project[] = [
       "Service-layer business logic",
     ],
 
-    // No image for now
-    // No GitHub because the project is not uploaded
     liveUrl: "#",
+  },
+
+  // =========================================================
+  // 5. SWEET HOUSE
+  // =========================================================
+
+  {
+    id: 5,
+
+    title: "Sweet House",
+
+    category: "web",
+
+    duration: "Ongoing",
+
+    role: "Full-Stack Developer",
+
+    technologies: [
+      "Laravel",
+      "PHP",
+      "React",
+      "JavaScript",
+      "MySQL",
+      "REST API",
+      "Laravel Sanctum",
+      "Eloquent ORM",
+      "Authentication",
+      "Authorization",
+      "Database Design",
+      "Request Validation",
+      "Shopping Cart",
+      "Order Management",
+      "Vite",
+    ],
+
+    description:
+      "A modern dessert e-commerce application built with Laravel and React, providing a complete web experience for browsing products, exploring categories, managing shopping cart items, and placing orders through a structured frontend and backend architecture.",
+
+    challenge:
+      "The application required a reliable connection between the React frontend and Laravel backend while managing products, categories, users, authentication, cart operations, orders, stock, and business logic through a structured and maintainable architecture.",
+
+    solution:
+      "Developed the application using React for the frontend and Laravel for the backend, connected through RESTful APIs. Implemented authentication, authorization, product and category management, database relationships, shopping cart functionality, order processing, stock validation, request validation, and structured frontend components.",
+
+    outcome:
+      "Built a complete full-stack dessert e-commerce application with a responsive React interface and a structured Laravel backend, providing organized product browsing, authentication, cart management, and order workflows.",
+
+    features: [
+      "User registration and authentication",
+      "Login and logout functionality",
+      "Product browsing",
+      "Category browsing",
+      "Product filtering by category",
+      "Product and category management",
+      "Shopping cart management",
+      "Add to cart functionality",
+      "Quantity management",
+      "Order creation",
+      "Order item management",
+      "Stock validation",
+      "RESTful API integration",
+      "Secure authentication",
+      "Request validation",
+      "Database relationships",
+      "Responsive React interface",
+      "Reusable frontend components",
+    ],
+
+    image: sweetHouse207,
+
+    imageGroups: [
+      {
+        title: "Sweet House Interface",
+
+        images: [
+          sweetHouse203,
+          sweetHouse204,
+          sweetHouse205,
+          sweetHouse207,
+        ],
+      },
+    ],
+
+    liveUrl: "#",
+
+    githubUrl: "https://github.com/esraaghneem/sweet-house-backend",
   },
 ];
