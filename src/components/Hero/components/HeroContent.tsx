@@ -4,8 +4,7 @@ import { Zap, Download } from "lucide-react";
 import { ActionButton } from "./ActionButton";
 import { DynamicCodeSnippet } from "./DynamicCodeSnippet";
 
-import cvFile from "../../../assets/Esraa_Ghneem_CV_updated (1).pdf";
-
+import cvFile from "../../../assets/Esraa_Ghneem_FullStack_CV.pdf";
 interface HeroContentProps {
   scrollToSection: (sectionId: string) => void;
   coreTechs: string[];
